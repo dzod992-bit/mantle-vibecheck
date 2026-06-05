@@ -2,70 +2,55 @@
 
 import { useState } from "react";
 
-const sampleContract = `// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
+import { vulnerableSample } from "@/lib/audit/samples";
+import type { AuditReport } from "@/lib/audit/types";
 
-contract VibeVault {
-    address public owner;
-    mapping(address => uint256) public balances;
-
-    constructor() {
-        owner = msg.sender;
-    }
-
-    function deposit() external payable {
-        balances[msg.sender] += msg.value;
-    }
-
-    function withdraw(uint256 amount) external {
-        require(balances[msg.sender] >= amount);
-
-        (bool sent,) = msg.sender.call{value: amount}("");
-        require(sent);
-
-        balances[msg.sender] -= amount;
-    }
-
-    function emergencySweep(address payable recipient) external {
-        require(tx.origin == owner);
-        recipient.transfer(address(this).balance);
-    }
-}`;
-
-const findings = [
-  {
-    severity: "Critical",
-    title: "State update after external call",
-    line: "19",
-    body: "The withdrawal sends ETH before reducing the caller balance. A receiver can re-enter and withdraw repeatedly.",
-  },
-  {
-    severity: "High",
-    title: "Authorization uses tx.origin",
-    line: "26",
-    body: "A malicious intermediary contract can trick the owner into authorizing the emergency sweep.",
-  },
-  {
-    severity: "Medium",
-    title: "No zero-address guard",
-    line: "25",
-    body: "Funds can be irrecoverably sent to the zero address during an emergency action.",
-  },
-];
+type AuditErrorPayload = {
+  error?: string;
+  diagnostics?: Array<{ message: string }>;
+};
 
 export function AuditWorkbench() {
-  const [code, setCode] = useState(sampleContract);
+  const [code, setCode] = useState(vulnerableSample);
   const [isScanning, setIsScanning] = useState(false);
-  const [hasReport, setHasReport] = useState(false);
+  const [report, setReport] = useState<AuditReport | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  function runDemoScan() {
+  async function runScan() {
     setIsScanning(true);
-    setHasReport(false);
+    setReport(null);
+    setError(null);
 
-    window.setTimeout(() => {
+    try {
+      const response = await fetch("/api/audit", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          filename: "VibeVault.sol",
+          source: code,
+        }),
+      });
+      const payload = (await response.json()) as AuditReport | AuditErrorPayload;
+
+      if (!response.ok) {
+        const errorPayload = payload as AuditErrorPayload;
+        throw new Error(
+          errorPayload.diagnostics?.[0]?.message ??
+            errorPayload.error ??
+            "The contract could not be analysed.",
+        );
+      }
+
+      setReport(payload as AuditReport);
+    } catch (scanError) {
+      setError(
+        scanError instanceof Error
+          ? scanError.message
+          : "The contract could not be analysed.",
+      );
+    } finally {
       setIsScanning(false);
-      setHasReport(true);
-    }, 700);
+    }
   }
 
   return (
@@ -75,7 +60,7 @@ export function AuditWorkbench() {
           <span className="section-kicker">Live product preview</span>
           <h2>Check a contract before it becomes an incident.</h2>
         </div>
-        <span className="demo-badge">Iteration 01 · Demo engine</span>
+        <span className="demo-badge">Iteration 03 · Solidity AST engine</span>
       </div>
 
       <div className="workbench">
@@ -89,8 +74,9 @@ export function AuditWorkbench() {
               className="text-button"
               type="button"
               onClick={() => {
-                setCode(sampleContract);
-                setHasReport(false);
+                setCode(vulnerableSample);
+                setReport(null);
+                setError(null);
               }}
             >
               Reset sample
@@ -105,7 +91,8 @@ export function AuditWorkbench() {
             value={code}
             onChange={(event) => {
               setCode(event.target.value);
-              setHasReport(false);
+              setReport(null);
+              setError(null);
             }}
           />
           <div className="editor-footer">
@@ -117,7 +104,7 @@ export function AuditWorkbench() {
               className="primary-button"
               type="button"
               disabled={!code.trim() || isScanning}
-              onClick={runDemoScan}
+              onClick={runScan}
             >
               {isScanning ? "Inspecting contract..." : "Run VibeCheck"}
               <span aria-hidden="true">↗</span>
@@ -126,20 +113,17 @@ export function AuditWorkbench() {
         </div>
 
         <aside className="report-panel" aria-live="polite">
-          {!hasReport && !isScanning ? (
+          {report === null && !isScanning && error === null ? (
             <div className="report-empty">
               <div className="radar" aria-hidden="true">
                 <span />
               </div>
               <h3>Ready to inspect</h3>
-              <p>
-                Run the sample contract to preview the security report
-                experience.
-              </p>
+              <p>Compile the sample and run the deterministic security rules.</p>
               <ul>
-                <li>Deterministic Solidity checks</li>
-                <li>AI-assisted threat model</li>
-                <li>Mantle audit proof</li>
+                <li>Solidity 0.8.28 compilation</li>
+                <li>AST-based security checks</li>
+                <li>Line-level evidence</li>
               </ul>
             </div>
           ) : null}
@@ -153,35 +137,67 @@ export function AuditWorkbench() {
             </div>
           ) : null}
 
-          {hasReport ? (
+          {error !== null && !isScanning ? (
+            <div className="report-empty error-state">
+              <span className="error-code">COMPILATION FAILED</span>
+              <h3>Fix the source and run it again.</h3>
+              <p>{error}</p>
+            </div>
+          ) : null}
+
+          {report !== null ? (
             <div className="report">
               <div className="score-row">
-                <div className="score-ring">
-                  <strong>42</strong>
+                <div className={`score-ring risk-${report.risk}`}>
+                  <strong>{report.score}</strong>
                   <span>/100</span>
                 </div>
                 <div>
-                  <span className="risk-label">High risk</span>
-                  <h3>Not ready to ship</h3>
-                  <p>3 actionable findings</p>
+                  <span className={`risk-label risk-${report.risk}`}>
+                    {report.risk === "pass"
+                      ? "No known risks"
+                      : `${report.risk} risk`}
+                  </span>
+                  <h3>
+                    {report.risk === "pass"
+                      ? "Ready for AI review"
+                      : "Not ready to ship"}
+                  </h3>
+                  <p>
+                    {report.summary.total} actionable{" "}
+                    {report.summary.total === 1 ? "finding" : "findings"} · solc{" "}
+                    {report.compilerVersion.split("+")[0]}
+                  </p>
                 </div>
               </div>
               <div className="finding-list">
-                {findings.map((finding) => (
-                  <article className="finding" key={finding.title}>
+                {report.findings.map((finding) => (
+                  <article
+                    className="finding"
+                    key={`${finding.ruleId}-${finding.line}`}
+                  >
                     <div className="finding-top">
-                      <span className={`severity ${finding.severity.toLowerCase()}`}>
+                      <span className={`severity ${finding.severity}`}>
                         {finding.severity}
                       </span>
-                      <span className="mono">L{finding.line}</span>
+                      <span className="mono">
+                        L{finding.line} · {finding.confidence} confidence
+                      </span>
                     </div>
                     <h4>{finding.title}</h4>
-                    <p>{finding.body}</p>
+                    <p>{finding.description}</p>
+                    <code>{finding.evidence}</code>
                   </article>
                 ))}
+                {report.findings.length === 0 ? (
+                  <div className="clean-report">
+                    No high-confidence issues were found by the deterministic
+                    rule set. AI reasoning is the next review layer.
+                  </div>
+                ) : null}
               </div>
               <button className="proof-button" type="button" disabled>
-                Publish proof · available in Iteration 02
+                Add AI review · available in Iteration 04
               </button>
             </div>
           ) : null}

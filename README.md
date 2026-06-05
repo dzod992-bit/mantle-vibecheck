@@ -7,9 +7,10 @@ audit proof stored on Mantle.
 
 ## Current status
 
-Iteration 1 provides the product shell and an interactive report preview.
-The scanner, AI provider, and Mantle contract are implemented in later
-iterations described in [docs/ROADMAP.md](docs/ROADMAP.md).
+The current build includes the product UI, deterministic Solidity AST
+analysis, and the signed on-chain audit registry. AI reasoning and public
+testnet deployment are implemented in later iterations described in
+[docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## Local development
 
@@ -21,6 +22,7 @@ Requirements:
 ```bash
 npm install
 npm run dev
+npm test
 ```
 
 Open `http://localhost:3000`.
@@ -42,7 +44,7 @@ code, model version, publisher, score, finding counts, expiry, and nonce.
 ```text
 Next.js frontend
   -> audit API
-     -> solc AST + deterministic rule engine
+     -> solc 0.8.28 AST + deterministic rule engine
      -> AI threat model and remediation
   -> signed audit result
      -> AuditRegistry contract on Mantle Sepolia

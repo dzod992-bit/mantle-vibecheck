@@ -9,6 +9,8 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run && hardhat test",
+    "test:unit": "vitest run",
     "contracts:compile": "hardhat compile",
     "contracts:test": "hardhat test",
     "contracts:deploy:local": "hardhat run scripts/deploy-audit-registry.ts",
@@ -18,6 +20,7 @@
     "next": "16.2.7",
     "react": "19.2.7",
     "react-dom": "19.2.7",
+    "solc": "^0.8.28",
     "viem": "2.52.2",
     "zod": "4.4.3"
   },
@@ -35,10 +38,12 @@
     "eslint-config-next": "16.2.7",
     "hardhat": "^3.8.0",
     "tailwindcss": "4.3.0",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "vitest": "^4.1.8"
   },
   "overrides": {
     "@actions/http-client": "4.0.1",
-    "postcss": "8.5.15"
+    "postcss": "8.5.15",
+    "tmp": "0.2.6"
   }
 }
