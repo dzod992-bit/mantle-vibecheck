@@ -25,6 +25,18 @@ npm run dev
 
 Open `http://localhost:3000`.
 
+## Smart contracts
+
+```bash
+npm run contracts:compile
+npm run contracts:test
+npm run contracts:deploy:local
+```
+
+`AuditRegistry` verifies an EIP-712 signature from the configured trusted
+VibeCheck signer before recording an audit. A report is bound to its source
+code, model version, publisher, score, finding counts, expiry, and nonce.
+
 ## Planned architecture
 
 ```text

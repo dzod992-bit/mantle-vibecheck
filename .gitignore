@@ -23,6 +23,8 @@
 /artifacts
 /cache
 /typechain-types
+/deployments/hardhatOp.json
+/deployments/default.json
 
 # editors and operating systems
 .DS_Store

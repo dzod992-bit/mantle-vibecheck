@@ -2,12 +2,17 @@
   "name": "mantle-vibecheck",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "contracts:compile": "hardhat compile",
+    "contracts:test": "hardhat test",
+    "contracts:deploy:local": "hardhat run scripts/deploy-audit-registry.ts",
+    "contracts:deploy:mantle": "hardhat run scripts/deploy-audit-registry.ts --network mantleSepolia"
   },
   "dependencies": {
     "next": "16.2.7",
@@ -17,16 +22,23 @@
     "zod": "4.4.3"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^3.0.10",
+    "@nomicfoundation/hardhat-node-test-runner": "^3.0.17",
+    "@nomicfoundation/hardhat-viem": "^3.0.9",
+    "@nomicfoundation/hardhat-viem-assertions": "^3.1.1",
+    "@openzeppelin/contracts": "^5.6.1",
     "@tailwindcss/postcss": "4.3.0",
     "@types/node": "25.9.1",
     "@types/react": "19.2.16",
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.7",
+    "hardhat": "^3.8.0",
     "tailwindcss": "4.3.0",
     "typescript": "6.0.3"
   },
   "overrides": {
+    "@actions/http-client": "4.0.1",
     "postcss": "8.5.15"
   }
 }
