@@ -8,9 +8,9 @@ audit proof stored on Mantle.
 ## Current status
 
 The current build includes the product UI, deterministic Solidity AST
-analysis, and the signed on-chain audit registry. AI reasoning and public
-testnet deployment are implemented in later iterations described in
-[docs/ROADMAP.md](docs/ROADMAP.md).
+analysis, a provider-neutral AI review layer, EIP-712 proof generation, wallet
+publication flow, and the signed on-chain audit registry. Public testnet
+deployment is described in [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## Local development
 
@@ -38,6 +38,20 @@ npm run contracts:deploy:local
 `AuditRegistry` verifies an EIP-712 signature from the configured trusted
 VibeCheck signer before recording an audit. A report is bound to its source
 code, model version, publisher, score, finding counts, expiry, and nonce.
+
+## AI review
+
+The app works without an API key by using a transparent deterministic fallback.
+For live model reasoning, configure:
+
+```text
+AI_API_KEY=...
+AI_MODEL=...
+AI_API_BASE_URL=https://api.openai.com/v1
+```
+
+The endpoint uses an OpenAI-compatible chat-completions interface and validates
+the returned JSON before it can be included in a signed proof.
 
 ## Planned architecture
 

@@ -1,11 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import type { Address, Hex } from "viem";
 
 import { vulnerableSample } from "@/lib/audit/samples";
 import type { AuditReport } from "@/lib/audit/types";
+import type { ReviewResponse } from "@/lib/review/types";
+import {
+  connectBrowserWallet,
+  publishAuditProof,
+} from "@/lib/review/wallet";
 
-type AuditErrorPayload = {
+type ApiErrorPayload = {
   error?: string;
   diagnostics?: Array<{ message: string }>;
 };
@@ -13,12 +19,20 @@ type AuditErrorPayload = {
 export function AuditWorkbench() {
   const [code, setCode] = useState(vulnerableSample);
   const [isScanning, setIsScanning] = useState(false);
+  const [isReviewing, setIsReviewing] = useState(false);
+  const [isConnecting, setIsConnecting] = useState(false);
+  const [isPublishing, setIsPublishing] = useState(false);
   const [report, setReport] = useState<AuditReport | null>(null);
+  const [review, setReview] = useState<ReviewResponse | null>(null);
+  const [walletAddress, setWalletAddress] = useState<Address | null>(null);
+  const [transactionHash, setTransactionHash] = useState<Hex | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   async function runScan() {
     setIsScanning(true);
     setReport(null);
+    setReview(null);
+    setTransactionHash(null);
     setError(null);
 
     try {
@@ -30,27 +44,96 @@ export function AuditWorkbench() {
           source: code,
         }),
       });
-      const payload = (await response.json()) as AuditReport | AuditErrorPayload;
+      const payload = (await response.json()) as AuditReport | ApiErrorPayload;
 
       if (!response.ok) {
-        const errorPayload = payload as AuditErrorPayload;
-        throw new Error(
-          errorPayload.diagnostics?.[0]?.message ??
-            errorPayload.error ??
-            "The contract could not be analysed.",
-        );
+        throwApiError(payload);
       }
 
       setReport(payload as AuditReport);
     } catch (scanError) {
-      setError(
-        scanError instanceof Error
-          ? scanError.message
-          : "The contract could not be analysed.",
-      );
+      setError(getErrorMessage(scanError));
     } finally {
       setIsScanning(false);
     }
+  }
+
+  async function runAiReview(publisher = walletAddress) {
+    setIsReviewing(true);
+    setTransactionHash(null);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/review", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          filename: "VibeVault.sol",
+          source: code,
+          publisher: publisher ?? undefined,
+        }),
+      });
+      const payload = (await response.json()) as
+        | ReviewResponse
+        | ApiErrorPayload;
+
+      if (!response.ok) {
+        throwApiError(payload);
+      }
+
+      setReview(payload as ReviewResponse);
+      setReport((payload as ReviewResponse).report);
+    } catch (reviewError) {
+      setError(getErrorMessage(reviewError));
+    } finally {
+      setIsReviewing(false);
+    }
+  }
+
+  async function connectWallet() {
+    setIsConnecting(true);
+    setError(null);
+
+    try {
+      const address = await connectBrowserWallet();
+      setWalletAddress(address);
+      if (review !== null) {
+        await runAiReview(address);
+      }
+    } catch (walletError) {
+      setError(getErrorMessage(walletError));
+    } finally {
+      setIsConnecting(false);
+    }
+  }
+
+  async function publishProof() {
+    if (review?.proof === null || review?.proof === undefined) {
+      return;
+    }
+    if (walletAddress === null) {
+      setError("Connect the publisher wallet before sending the transaction.");
+      return;
+    }
+
+    setIsPublishing(true);
+    setError(null);
+    try {
+      const hash = await publishAuditProof(review.proof, walletAddress);
+      setTransactionHash(hash);
+    } catch (publishError) {
+      setError(getErrorMessage(publishError));
+    } finally {
+      setIsPublishing(false);
+    }
+  }
+
+  function resetSource() {
+    setCode(vulnerableSample);
+    setReport(null);
+    setReview(null);
+    setTransactionHash(null);
+    setError(null);
   }
 
   return (
@@ -60,7 +143,7 @@ export function AuditWorkbench() {
           <span className="section-kicker">Live product preview</span>
           <h2>Check a contract before it becomes an incident.</h2>
         </div>
-        <span className="demo-badge">Iteration 03 · Solidity AST engine</span>
+        <span className="demo-badge">Iteration 04 · AI + proof pipeline</span>
       </div>
 
       <div className="workbench">
@@ -70,15 +153,7 @@ export function AuditWorkbench() {
               <span className="solidity-icon">S</span>
               VibeVault.sol
             </div>
-            <button
-              className="text-button"
-              type="button"
-              onClick={() => {
-                setCode(vulnerableSample);
-                setReport(null);
-                setError(null);
-              }}
-            >
+            <button className="text-button" type="button" onClick={resetSource}>
               Reset sample
             </button>
           </div>
@@ -92,13 +167,15 @@ export function AuditWorkbench() {
             onChange={(event) => {
               setCode(event.target.value);
               setReport(null);
+              setReview(null);
+              setTransactionHash(null);
               setError(null);
             }}
           />
           <div className="editor-footer">
             <span>
               <i aria-hidden="true" />
-              Source stays private until you publish a report
+              Source is processed in memory and is not persisted
             </span>
             <button
               className="primary-button"
@@ -121,9 +198,9 @@ export function AuditWorkbench() {
               <h3>Ready to inspect</h3>
               <p>Compile the sample and run the deterministic security rules.</p>
               <ul>
-                <li>Solidity 0.8.28 compilation</li>
-                <li>AST-based security checks</li>
-                <li>Line-level evidence</li>
+                <li>Solidity AST security checks</li>
+                <li>Validated AI threat model</li>
+                <li>Signed Mantle audit proof</li>
               </ul>
             </div>
           ) : null}
@@ -137,10 +214,10 @@ export function AuditWorkbench() {
             </div>
           ) : null}
 
-          {error !== null && !isScanning ? (
+          {error !== null && report === null && !isScanning ? (
             <div className="report-empty error-state">
-              <span className="error-code">COMPILATION FAILED</span>
-              <h3>Fix the source and run it again.</h3>
+              <span className="error-code">REQUEST FAILED</span>
+              <h3>Fix the issue and run it again.</h3>
               <p>{error}</p>
             </div>
           ) : null}
@@ -170,6 +247,7 @@ export function AuditWorkbench() {
                   </p>
                 </div>
               </div>
+
               <div className="finding-list">
                 {report.findings.map((finding) => (
                   <article
@@ -196,13 +274,148 @@ export function AuditWorkbench() {
                   </div>
                 ) : null}
               </div>
-              <button className="proof-button" type="button" disabled>
-                Add AI review · available in Iteration 04
-              </button>
+
+              {review === null ? (
+                <button
+                  className="proof-button"
+                  type="button"
+                  disabled={isReviewing}
+                  onClick={() => runAiReview()}
+                >
+                  {isReviewing
+                    ? "Building threat model..."
+                    : "Generate AI threat model"}
+                </button>
+              ) : (
+                <AiReviewPanel review={review} />
+              )}
+
+              {review !== null ? (
+                <div className="publish-panel">
+                  <div>
+                    <span className="mono">ON-CHAIN PROOF</span>
+                    <p>
+                      {walletAddress === null
+                        ? "Connect the wallet that will own this audit record."
+                        : shortenAddress(walletAddress)}
+                    </p>
+                  </div>
+
+                  {walletAddress === null ? (
+                    <button
+                      className="secondary-button"
+                      type="button"
+                      disabled={isConnecting}
+                      onClick={connectWallet}
+                    >
+                      {isConnecting ? "Connecting..." : "Connect wallet"}
+                    </button>
+                  ) : null}
+
+                  {walletAddress !== null && review.proof === null ? (
+                    <button
+                      className="secondary-button"
+                      type="button"
+                      disabled={isReviewing}
+                      onClick={() => runAiReview(walletAddress)}
+                    >
+                      {isReviewing ? "Signing..." : "Request signed proof"}
+                    </button>
+                  ) : null}
+
+                  {review.proof !== null && transactionHash === null ? (
+                    <button
+                      className="proof-button"
+                      type="button"
+                      disabled={isPublishing}
+                      onClick={publishProof}
+                    >
+                      {isPublishing
+                        ? "Publishing on Mantle..."
+                        : "Publish proof on Mantle"}
+                    </button>
+                  ) : null}
+
+                  {transactionHash !== null ? (
+                    <a
+                      className="transaction-link"
+                      href={`https://explorer.sepolia.mantle.xyz/tx/${transactionHash}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View confirmed transaction ↗
+                    </a>
+                  ) : null}
+
+                  {review.proofUnavailableReason !== undefined &&
+                  review.proof === null ? (
+                    <small>{review.proofUnavailableReason}</small>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {error !== null ? <p className="inline-error">{error}</p> : null}
             </div>
           ) : null}
         </aside>
       </div>
     </section>
   );
+}
+
+function AiReviewPanel({ review }: { review: ReviewResponse }) {
+  return (
+    <section className="ai-review">
+      <div className="ai-review-heading">
+        <span className="ai-badge">
+          {review.ai.mode === "live" ? "Live AI" : "Local fallback"}
+        </span>
+        <span className="mono">{review.ai.model}</span>
+      </div>
+      <h4>Threat model</h4>
+      <p>{review.ai.executiveSummary}</p>
+      <div className="threat-list">
+        {review.ai.threatModel.slice(0, 3).map((item) => (
+          <article key={`${item.asset}-${item.threat}`}>
+            <strong>{item.asset}</strong>
+            <span>{item.threat}</span>
+            <small>{item.control}</small>
+          </article>
+        ))}
+      </div>
+      <div className="patch-summary">
+        <span>{review.ai.patches.length} remediation steps prepared</span>
+        <span>
+          {review.ai.patchedSource === null
+            ? "Manual patch required"
+            : "Patched source generated"}
+        </span>
+      </div>
+      {review.ai.patchedSource !== null ? (
+        <details className="patch-preview">
+          <summary>Preview patched Solidity</summary>
+          <pre>{review.ai.patchedSource}</pre>
+        </details>
+      ) : null}
+    </section>
+  );
+}
+
+function throwApiError(payload: AuditReport | ReviewResponse | ApiErrorPayload): never {
+  const errorPayload = payload as ApiErrorPayload;
+  throw new Error(
+    errorPayload.diagnostics?.[0]?.message ??
+      errorPayload.error ??
+      "The request could not be completed.",
+  );
+}
+
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error
+    ? error.message
+    : "The request could not be completed.";
+}
+
+function shortenAddress(address: Address): string {
+  return `${address.slice(0, 6)}...${address.slice(-4)}`;
 }

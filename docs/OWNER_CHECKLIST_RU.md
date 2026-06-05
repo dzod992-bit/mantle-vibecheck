@@ -66,6 +66,7 @@ Private key позже добавляется владельцем только 
 ```text
 AI_API_KEY=...
 AI_MODEL=...
+AI_API_BASE_URL=https://api.openai.com/v1
 ```
 
 Файл уже исключён из Git.
