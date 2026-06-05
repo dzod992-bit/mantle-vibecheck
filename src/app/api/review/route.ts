@@ -9,6 +9,10 @@ import {
 import { createAiReview } from "@/lib/review/reviewer";
 import { createSignedAuditProof } from "@/lib/review/proof";
 import type { ReviewResponse } from "@/lib/review/types";
+import {
+  rateLimitResponse,
+  rateLimitReviewRequest,
+} from "@/lib/security/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -24,6 +28,11 @@ const requestSchema = z.object({
 });
 
 export async function POST(request: Request) {
+  const rateLimit = rateLimitReviewRequest(request);
+  if (!rateLimit.allowed) {
+    return rateLimitResponse(rateLimit);
+  }
+
   let body: unknown;
 
   try {

@@ -10,7 +10,7 @@ audit proof stored on Mantle.
 The current build includes the product UI, deterministic Solidity AST
 analysis, a provider-neutral AI review layer, EIP-712 proof generation, wallet
 publication flow, and the signed on-chain audit registry. Public testnet
-deployment is described in [docs/ROADMAP.md](docs/ROADMAP.md).
+deployment is described in [docs/DEPLOYMENT_RU.md](docs/DEPLOYMENT_RU.md).
 
 ## Local development
 
@@ -33,6 +33,7 @@ Open `http://localhost:3000`.
 npm run contracts:compile
 npm run contracts:test
 npm run contracts:deploy:local
+npm run contracts:verification-input
 ```
 
 `AuditRegistry` verifies an EIP-712 signature from the configured trusted
@@ -58,7 +59,7 @@ the returned JSON before it can be included in a signed proof.
 ```text
 Next.js frontend
   -> audit API
-     -> solc 0.8.28 AST + deterministic rule engine
+     -> solc 0.8.23 AST + deterministic rule engine
      -> AI threat model and remediation
   -> signed audit result
      -> AuditRegistry contract on Mantle Sepolia
@@ -74,3 +75,9 @@ Use a dedicated low-value testnet wallet for development and deployment.
 This project targets the AI DevTools track of Mantle's Turing Test Hackathon
 2026. Submission materials and owner actions are tracked in
 [docs/OWNER_CHECKLIST_RU.md](docs/OWNER_CHECKLIST_RU.md).
+
+- [Development roadmap](docs/ROADMAP.md)
+- [Deployment guide](docs/DEPLOYMENT_RU.md)
+- [Submission draft](docs/SUBMISSION.md)
+- [Demo script](docs/DEMO_SCRIPT.md)
+- [Security model](docs/SECURITY.md)

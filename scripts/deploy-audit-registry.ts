@@ -6,7 +6,13 @@ import { getAddress, isAddress } from "viem";
 
 const connection = await network.create();
 const { viem } = connection;
-const [deployer] = await viem.getWalletClients();
+const walletClients = await viem.getWalletClients();
+const deployer = walletClients[0];
+if (deployer === undefined) {
+  throw new Error(
+    "No deployment account configured. Set MANTLE_DEPLOYER_PRIVATE_KEY in your local environment.",
+  );
+}
 
 const configuredSigner = process.env.AUDIT_TRUSTED_SIGNER;
 if (configuredSigner !== undefined && !isAddress(configuredSigner)) {

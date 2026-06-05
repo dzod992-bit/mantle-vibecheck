@@ -780,6 +780,14 @@ textarea {
   font-size: 12px;
 }
 
+.proof-page-link {
+  color: var(--green-bright);
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: 10px;
+}
+
 .inline-error {
   margin: 12px 0 0;
   padding: 10px 12px;
@@ -788,6 +796,114 @@ textarea {
   background: rgba(255, 136, 92, 0.07);
   font-size: 10px;
   line-height: 1.45;
+}
+
+.proof-page {
+  min-height: 100vh;
+  padding-block: 60px;
+}
+
+.proof-back {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.proof-back:hover {
+  color: var(--ink);
+}
+
+.proof-card {
+  padding: clamp(24px, 5vw, 58px);
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 85% 5%, rgba(184, 243, 91, 0.1), transparent 20rem),
+    var(--panel);
+}
+
+.proof-status,
+.proof-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.proof-status {
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.proof-hero {
+  justify-content: flex-start;
+  padding: 48px 0;
+}
+
+.proof-hero .score-ring {
+  flex: 0 0 auto;
+}
+
+.proof-hero h1,
+.proof-empty h1 {
+  margin: 10px 0;
+  font-size: clamp(34px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.proof-hero p,
+.proof-empty p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 0 28px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.proof-grid > div {
+  min-width: 0;
+  padding: 18px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.proof-grid dt {
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.proof-grid dd {
+  overflow: hidden;
+  margin: 0;
+  color: #d4d6c9;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.proof-explorer {
+  display: block;
+  text-align: center;
+}
+
+.proof-empty {
+  min-height: 440px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .how {
@@ -969,5 +1085,15 @@ textarea {
     align-items: start;
     flex-direction: column;
     padding-block: 30px;
+  }
+
+  .proof-status,
+  .proof-hero {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .proof-grid {
+    grid-template-columns: 1fr;
   }
 }

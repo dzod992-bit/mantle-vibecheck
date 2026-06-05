@@ -25,6 +25,8 @@
 /typechain-types
 /deployments/hardhatOp.json
 /deployments/default.json
+/AuditRegistry.standard-input.json
+/AuditRegistry.constructor-args.txt
 
 # editors and operating systems
 .DS_Store

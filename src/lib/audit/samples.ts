@@ -1,5 +1,5 @@
 export const vulnerableSample = `// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.20;
 
 contract VibeVault {
     address public owner;
@@ -29,7 +29,7 @@ contract VibeVault {
 }`;
 
 export const safeSample = `// SPDX-License-Identifier: MIT
-pragma solidity 0.8.28;
+pragma solidity 0.8.23;
 
 contract SaferVault {
     mapping(address => uint256) public balances;

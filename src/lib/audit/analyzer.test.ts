@@ -30,7 +30,7 @@ describe("analyzeSolidity", () => {
 
   it("detects unchecked low-level calls and selfdestruct", () => {
     const source = `// SPDX-License-Identifier: MIT
-pragma solidity 0.8.28;
+pragma solidity 0.8.23;
 contract Unsafe {
     function ping(address target) external {
         target.call("");
@@ -48,11 +48,11 @@ contract Unsafe {
 
   it("returns structured compiler errors", () => {
     expect(() =>
-      analyzeSolidity("pragma solidity 0.8.28; contract Broken {", "Broken.sol"),
+      analyzeSolidity("pragma solidity 0.8.23; contract Broken {", "Broken.sol"),
     ).toThrow(AuditCompilationError);
 
     try {
-      analyzeSolidity("pragma solidity 0.8.28; contract Broken {", "Broken.sol");
+      analyzeSolidity("pragma solidity 0.8.23; contract Broken {", "Broken.sol");
     } catch (error) {
       expect(error).toBeInstanceOf(AuditCompilationError);
       expect((error as AuditCompilationError).diagnostics[0].line).toBe(1);

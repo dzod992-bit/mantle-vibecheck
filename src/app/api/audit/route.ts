@@ -5,6 +5,10 @@ import {
   analyzeSolidity,
   AuditCompilationError,
 } from "@/lib/audit/analyzer";
+import {
+  rateLimitAuditRequest,
+  rateLimitResponse,
+} from "@/lib/security/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -19,6 +23,11 @@ const requestSchema = z.object({
 });
 
 export async function POST(request: Request) {
+  const rateLimit = rateLimitAuditRequest(request);
+  if (!rateLimit.allowed) {
+    return rateLimitResponse(rateLimit);
+  }
+
   let body: unknown;
 
   try {

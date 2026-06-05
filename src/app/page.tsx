@@ -55,7 +55,7 @@ export default function Home() {
         </p>
         <div className="hero-meta">
           <div>
-            <strong>12</strong>
+            <strong>10</strong>
             <span>security checks</span>
           </div>
           <div>

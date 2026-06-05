@@ -1,8 +1,10 @@
+import "dotenv/config";
+
 import hardhatNetworkHelpers from "@nomicfoundation/hardhat-network-helpers";
 import hardhatNodeTestRunner from "@nomicfoundation/hardhat-node-test-runner";
 import hardhatViem from "@nomicfoundation/hardhat-viem";
 import hardhatViemAssertions from "@nomicfoundation/hardhat-viem-assertions";
-import { configVariable, defineConfig } from "hardhat/config";
+import { defineConfig } from "hardhat/config";
 
 export default defineConfig({
   plugins: [
@@ -14,10 +16,16 @@ export default defineConfig({
   solidity: {
     profiles: {
       default: {
-        version: "0.8.28",
+        version: "0.8.23",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+        },
       },
       production: {
-        version: "0.8.28",
+        version: "0.8.23",
         settings: {
           optimizer: {
             enabled: true,
@@ -34,9 +42,12 @@ export default defineConfig({
     },
     mantleSepolia: {
       type: "http",
-      chainType: "op",
-      url: configVariable("MANTLE_RPC_URL"),
-      accounts: [configVariable("MANTLE_DEPLOYER_PRIVATE_KEY")],
+      chainType: "generic",
+      url:
+        process.env.MANTLE_RPC_URL ?? "https://rpc.sepolia.mantle.xyz",
+      accounts: process.env.MANTLE_DEPLOYER_PRIVATE_KEY
+        ? [process.env.MANTLE_DEPLOYER_PRIVATE_KEY]
+        : [],
     },
   },
 });

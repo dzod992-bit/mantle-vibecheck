@@ -178,7 +178,7 @@ export function createFallbackReview(
 
 function patchKnownPatterns(source: string): string | null {
   const patched = source
-    .replace(/pragma\s+solidity\s+\^0\.8\.24;/, "pragma solidity 0.8.28;")
+    .replace(/pragma\s+solidity\s+\^0\.8\.\d+;/, "pragma solidity 0.8.23;")
     .replace(
       /require\(tx\.origin\s*==\s*owner\);/,
       'require(msg.sender == owner, "not owner");',

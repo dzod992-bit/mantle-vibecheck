@@ -9,16 +9,16 @@ import {
   type EIP1193Provider,
   type Hex,
 } from "viem";
-import { mantleSepoliaTestnet } from "viem/chains";
 
 import { auditRegistryAbi } from "@/lib/contracts/audit-registry";
+import { mantleSepolia } from "@/lib/contracts/mantle";
 
 import type { AuditProof } from "./types";
 
 export async function connectBrowserWallet(): Promise<Address> {
   const provider = getProvider();
   const walletClient = createWalletClient({
-    chain: mantleSepoliaTestnet,
+    chain: mantleSepolia,
     transport: custom(provider),
   });
   const [address] = await walletClient.requestAddresses();
@@ -34,14 +34,14 @@ export async function publishAuditProof(
   proof: AuditProof,
   publisher: Address,
 ): Promise<Hex> {
-  if (proof.chainId !== mantleSepoliaTestnet.id) {
+  if (proof.chainId !== mantleSepolia.id) {
     throw new Error("The proof was not signed for Mantle Sepolia.");
   }
 
   const provider = getProvider();
   const walletClient = createWalletClient({
     account: publisher,
-    chain: mantleSepoliaTestnet,
+    chain: mantleSepolia,
     transport: custom(provider),
   });
   await ensureMantleSepolia(walletClient);
@@ -61,7 +61,7 @@ export async function publishAuditProof(
     ],
   });
   const publicClient = createPublicClient({
-    chain: mantleSepoliaTestnet,
+    chain: mantleSepolia,
     transport: http(),
   });
   await publicClient.waitForTransactionReceipt({ hash });
@@ -79,9 +79,9 @@ async function ensureMantleSepolia(
   walletClient: ReturnType<typeof createWalletClient>,
 ): Promise<void> {
   try {
-    await walletClient.switchChain({ id: mantleSepoliaTestnet.id });
+    await walletClient.switchChain({ id: mantleSepolia.id });
   } catch {
-    await walletClient.addChain({ chain: mantleSepoliaTestnet });
-    await walletClient.switchChain({ id: mantleSepoliaTestnet.id });
+    await walletClient.addChain({ chain: mantleSepolia });
+    await walletClient.switchChain({ id: mantleSepolia.id });
   }
 }

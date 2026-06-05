@@ -10,6 +10,7 @@ import {
   connectBrowserWallet,
   publishAuditProof,
 } from "@/lib/review/wallet";
+import { mantleSepoliaExplorerUrl } from "@/lib/contracts/mantle";
 
 type ApiErrorPayload = {
   error?: string;
@@ -143,7 +144,7 @@ export function AuditWorkbench() {
           <span className="section-kicker">Live product preview</span>
           <h2>Check a contract before it becomes an incident.</h2>
         </div>
-        <span className="demo-badge">Iteration 04 · AI + proof pipeline</span>
+        <span className="demo-badge">Iteration 05 · Testnet release</span>
       </div>
 
       <div className="workbench">
@@ -198,7 +199,7 @@ export function AuditWorkbench() {
               <h3>Ready to inspect</h3>
               <p>Compile the sample and run the deterministic security rules.</p>
               <ul>
-                <li>Solidity AST security checks</li>
+                <li>Solidity 0.8.23 AST checks</li>
                 <li>Validated AI threat model</li>
                 <li>Signed Mantle audit proof</li>
               </ul>
@@ -339,11 +340,19 @@ export function AuditWorkbench() {
                   {transactionHash !== null ? (
                     <a
                       className="transaction-link"
-                      href={`https://explorer.sepolia.mantle.xyz/tx/${transactionHash}`}
+                      href={`${mantleSepoliaExplorerUrl}/tx/${transactionHash}`}
                       target="_blank"
                       rel="noreferrer"
                     >
                       View confirmed transaction ↗
+                    </a>
+                  ) : null}
+                  {transactionHash !== null && review.proof !== null ? (
+                    <a
+                      className="proof-page-link"
+                      href={`/proof/${review.proof.auditId}`}
+                    >
+                      Open public audit proof
                     </a>
                   ) : null}
 
