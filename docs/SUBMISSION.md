@@ -74,7 +74,7 @@ Solidity source
 ## Links to fill before submission
 
 - Demo: `TBD`
-- GitHub: `TBD`
+- GitHub: `https://github.com/dzod992-bit/mantle-vibecheck`
 - Demo video: `TBD`
 - Mantle contract: `TBD`
 - Public proof: `TBD`

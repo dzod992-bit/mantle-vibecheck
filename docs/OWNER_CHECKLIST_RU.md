@@ -19,8 +19,8 @@
 Также нужны имя и публичный email для Git commit. Email можно взять на GitHub:
 `Settings` -> `Emails` -> адрес вида `12345+name@users.noreply.github.com`.
 
-Текущий блокер: без URL репозитория можно делать локальные commits, но нельзя
-выполнять обязательный push после итерации.
+Готово: публичный репозиторий создан и подключён:
+`https://github.com/dzod992-bit/mantle-vibecheck`.
 
 ## 2. DoraHacks - зарегистрироваться до финальной подачи
 
@@ -86,10 +86,10 @@ AI_API_BASE_URL=https://api.openai.com/v1
 
 ## Что нужно передать в первую очередь
 
-- URL нового публичного GitHub-репозитория.
-- GitHub username.
-- GitHub noreply email для авторства commits.
-- Публичный адрес отдельного testnet-кошелька, когда он будет создан.
+- Получить testnet MNT на публичный адрес
+  `0x54Cf9018B5f143A0D1C7445893C8Bb26C3EABDc0`.
+- Локально заполнить `MANTLE_DEPLOYER_PRIVATE_KEY` и
+  `AUDIT_SIGNER_PRIVATE_KEY` в `.env`. Ключ в чат не отправлять.
 
 Не передавайте пароли, seed phrase, private key, recovery codes или API keys в
 открытом виде.
