@@ -107,6 +107,11 @@ npm.cmd run contracts:verification-input
 
 Названия кнопок MantleScan могут незначительно отличаться.
 
+Если форма MantleScan возвращает внутреннюю ошибку, создайте бесплатный API key
+на `https://etherscan.io/myapikey`, добавьте его локально в `.env` как
+`ETHERSCAN_API_KEY=...` и повторите verification через API. Ключ не добавляйте
+в Git и не отправляйте в чат.
+
 ## 7. Настроить приложение
 
 Создайте `.env.local`:

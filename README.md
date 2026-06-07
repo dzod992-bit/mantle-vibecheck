@@ -9,8 +9,10 @@ audit proof stored on Mantle.
 
 The current build includes the product UI, deterministic Solidity AST
 analysis, a provider-neutral AI review layer, EIP-712 proof generation, wallet
-publication flow, and the signed on-chain audit registry. Public testnet
-deployment is described in [docs/DEPLOYMENT_RU.md](docs/DEPLOYMENT_RU.md).
+publication flow, and the signed on-chain audit registry deployed on
+[Mantle Sepolia](https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52).
+Deployment details are in
+[docs/DEPLOYMENT_RU.md](docs/DEPLOYMENT_RU.md).
 
 ## Local development
 

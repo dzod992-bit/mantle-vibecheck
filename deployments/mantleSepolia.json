@@ -1,0 +1,14 @@
+{
+  "network": "mantleSepolia",
+  "chainId": 5003,
+  "address": "0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52",
+  "transactionHash": "0xd94fa1885ecf86854603edcd8483a324fb03a17bbb17178907a0a0c0c8756c32",
+  "owner": "0x54cf9018b5f143a0d1c7445893c8bb26c3eabdc0",
+  "trustedSigner": "0x54Cf9018B5f143A0D1C7445893C8Bb26C3EABDc0",
+  "deployedAt": "2026-06-07T13:07:33.650Z",
+  "explorerUrl": "https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52",
+  "demoProof": {
+    "auditId": "0xe52b3cc268f564d3a19a22d58393c10da6709c97b42f9a082d442a8d4d728088",
+    "transactionHash": "0x5e37439541426e58fffc56fc1cfb4265ea20824b1db19d79cd4e737e50858ad6"
+  }
+}

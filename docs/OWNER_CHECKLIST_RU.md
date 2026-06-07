@@ -86,10 +86,10 @@ AI_API_BASE_URL=https://api.openai.com/v1
 
 ## Что нужно передать в первую очередь
 
-- Получить testnet MNT на публичный адрес
-  `0x54Cf9018B5f143A0D1C7445893C8Bb26C3EABDc0`.
-- Локально заполнить `MANTLE_DEPLOYER_PRIVATE_KEY` и
-  `AUDIT_SIGNER_PRIVATE_KEY` в `.env`. Ключ в чат не отправлять.
+- Создать бесплатный Etherscan API key для автоматической verification:
+  `https://etherscan.io/myapikey`.
+- Развернуть frontend в Vercel по инструкции ниже.
+- Записать demo video и опубликовать X thread после появления public URL.
 
 Не передавайте пароли, seed phrase, private key, recovery codes или API keys в
 открытом виде.

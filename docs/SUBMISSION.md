@@ -76,7 +76,10 @@ Solidity source
 - Demo: `TBD`
 - GitHub: `https://github.com/dzod992-bit/mantle-vibecheck`
 - Demo video: `TBD`
-- Mantle contract: `TBD`
+- Mantle contract:
+  `https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52`
+- Demo proof transaction:
+  `https://sepolia.mantlescan.xyz/tx/0x5e37439541426e58fffc56fc1cfb4265ea20824b1db19d79cd4e737e50858ad6`
 - Public proof: `TBD`
 - X thread: `TBD`
 
