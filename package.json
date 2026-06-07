@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "hardhat compile && next build",
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
@@ -15,6 +15,7 @@
     "contracts:test": "hardhat test",
     "contracts:deploy:local": "hardhat run scripts/deploy-audit-registry.ts",
     "contracts:deploy:mantle": "hardhat run scripts/deploy-audit-registry.ts --network mantleSepolia",
+    "contracts:rotate-owner:mantle": "hardhat run scripts/rotate-owner.ts --network mantleSepolia",
     "contracts:rotate-signer:mantle": "hardhat run scripts/rotate-trusted-signer.ts --network mantleSepolia",
     "contracts:verification-input": "node scripts/export-verification-input.mjs"
   },

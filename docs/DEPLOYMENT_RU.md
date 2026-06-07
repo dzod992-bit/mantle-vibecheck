@@ -158,6 +158,10 @@ npm.cmd run dev
 8. Нажмите `Deploy`.
 9. После deployment откройте публичный URL и выполните полный demo flow.
 
+Локальные `.env` и `.env.*` должны быть перечислены в `.vercelignore`.
+Проверяйте build log: строка `Environments: .env` не должна появляться.
+Owner/deployer private key никогда не добавляется в Vercel.
+
 ## 9. Финальная проверка
 
 - GitHub публичный.

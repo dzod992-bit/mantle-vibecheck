@@ -88,7 +88,6 @@ AI_API_BASE_URL=https://api.openai.com/v1
 
 - Создать бесплатный Etherscan API key для автоматической verification:
   `https://etherscan.io/myapikey`.
-- Развернуть frontend в Vercel по инструкции ниже.
 - Записать demo video и опубликовать X thread после появления public URL.
 
 Не передавайте пароли, seed phrase, private key, recovery codes или API keys в

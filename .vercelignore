@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+
+AuditRegistry.constructor-args.txt
+AuditRegistry.standard-input.json
+artifacts
+cache
+coverage
+test-results

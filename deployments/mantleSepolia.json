@@ -3,8 +3,8 @@
   "chainId": 5003,
   "address": "0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52",
   "transactionHash": "0xd94fa1885ecf86854603edcd8483a324fb03a17bbb17178907a0a0c0c8756c32",
-  "owner": "0x54cf9018b5f143a0d1c7445893c8bb26c3eabdc0",
-  "trustedSigner": "0xC0294654BE597C2c79D18f976f5F65F56733C70a",
+  "owner": "0x8Cb875eBfC339d9D93629d2545dE4265330a5527",
+  "trustedSigner": "0x3cA3890c4B30df1c261AD856AADFeEB0C592bdBB",
   "deployedAt": "2026-06-07T13:07:33.650Z",
   "explorerUrl": "https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52",
   "demoProof": {
@@ -12,8 +12,18 @@
     "transactionHash": "0x5e37439541426e58fffc56fc1cfb4265ea20824b1db19d79cd4e737e50858ad6"
   },
   "signerRotation": {
-    "previousSigner": "0x54Cf9018B5f143A0D1C7445893C8Bb26C3EABDc0",
-    "transactionHash": "0x6165d7435ad750d745c51beaa6f37b71eb612c59b71c69029f7cda2ff4ca60aa",
-    "rotatedAt": "2026-06-07T13:46:09.780Z"
+    "previousSigner": "0xC0294654BE597C2c79D18f976f5F65F56733C70a",
+    "transactionHash": "0x55a7f97eb657e8bdddd26b9ad04f76efa72afbccfbeae7d213674883469dba7f",
+    "rotatedAt": "2026-06-07T18:18:37.628Z"
+  },
+  "ownerRotation": {
+    "previousOwner": "0x54cf9018b5f143a0d1c7445893c8bb26c3eabdc0",
+    "fundingTransactionHash": "0x254a64ce8841d65ce971ff150c519bf76b58f3d7340e1feb7f77490c874599c1",
+    "transactionHash": "0xdfd7143b58ed0d2b9831061612ad0a0e049310506cc6bd8d933be5dd34bfebff",
+    "rotatedAt": "2026-06-07T18:22:28.423Z"
+  },
+  "frontend": {
+    "url": "https://mantle-vibecheck.vercel.app",
+    "deploymentId": "dpl_CcoXXn5LyqReoBX9Nv32mKZDP5Bf"
   }
 }

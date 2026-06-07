@@ -73,7 +73,7 @@ Solidity source
 
 ## Links to fill before submission
 
-- Demo: `TBD`
+- Demo: `https://mantle-vibecheck.vercel.app`
 - GitHub: `https://github.com/dzod992-bit/mantle-vibecheck`
 - Demo video: `TBD`
 - Mantle contract:
@@ -81,8 +81,11 @@ Solidity source
 - Demo proof transaction:
   `https://sepolia.mantlescan.xyz/tx/0x5e37439541426e58fffc56fc1cfb4265ea20824b1db19d79cd4e737e50858ad6`
 - Dedicated signer rotation:
-  `https://sepolia.mantlescan.xyz/tx/0x6165d7435ad750d745c51beaa6f37b71eb612c59b71c69029f7cda2ff4ca60aa`
-- Public proof: `TBD`
+  `https://sepolia.mantlescan.xyz/tx/0x55a7f97eb657e8bdddd26b9ad04f76efa72afbccfbeae7d213674883469dba7f`
+- Owner isolation:
+  `https://sepolia.mantlescan.xyz/tx/0xdfd7143b58ed0d2b9831061612ad0a0e049310506cc6bd8d933be5dd34bfebff`
+- Public proof:
+  `https://mantle-vibecheck.vercel.app/proof/0xe52b3cc268f564d3a19a22d58393c10da6709c97b42f9a082d442a8d4d728088`
 - X thread: `TBD`
 
 ## Limitations
