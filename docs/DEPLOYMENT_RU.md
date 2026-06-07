@@ -67,6 +67,18 @@ Private key берётся только у отдельного тестовог
 Для первого testnet demo допускается использовать этот же тестовый аккаунт
 как owner и trusted signer. До mainnet signer необходимо отделить от owner.
 
+Перед публичным deployment создайте отдельный signer без средств. Запишите его
+private key только в `AUDIT_SIGNER_PRIVATE_KEY`, публичный адрес — в
+`AUDIT_TRUSTED_SIGNER`, затем выполните:
+
+```powershell
+npm.cmd run contracts:rotate-signer:mantle
+```
+
+Команда вызывается owner-кошельком, меняет signer on-chain и обновляет
+`deployments/mantleSepolia.json`. Owner/deployer private key в Vercel не
+передаётся.
+
 ## 5. Развернуть AuditRegistry
 
 ```powershell

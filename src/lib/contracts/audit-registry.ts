@@ -13,8 +13,10 @@ export const auditRegistryAbi = parseAbi([
   "function getAuditIdAt(bytes32 codeHash, uint256 index) view returns (bytes32)",
   "function trustedSigner() view returns (address)",
   "function usedNonces(address publisher, uint256 nonce) view returns (bool)",
+  "function setTrustedSigner(address newSigner)",
   "function publishAudit((bytes32 codeHash, bytes32 reportHash, bytes32 modelHash, address publisher, uint16 score, uint16 criticalCount, uint16 highCount, uint16 mediumCount, uint64 issuedAt, uint64 expiresAt, uint256 nonce) audit, bytes signature) returns (bytes32 auditId)",
   "event AuditPublished(bytes32 indexed auditId, bytes32 indexed codeHash, address indexed publisher, bytes32 reportHash, uint16 score)",
+  "event TrustedSignerUpdated(address indexed previousSigner, address indexed newSigner)",
 ]);
 
 export const auditTypedData = {

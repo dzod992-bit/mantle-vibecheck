@@ -80,6 +80,8 @@ Solidity source
   `https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52`
 - Demo proof transaction:
   `https://sepolia.mantlescan.xyz/tx/0x5e37439541426e58fffc56fc1cfb4265ea20824b1db19d79cd4e737e50858ad6`
+- Dedicated signer rotation:
+  `https://sepolia.mantlescan.xyz/tx/0x6165d7435ad750d745c51beaa6f37b71eb612c59b71c69029f7cda2ff4ca60aa`
 - Public proof: `TBD`
 - X thread: `TBD`
 
