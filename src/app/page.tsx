@@ -1,4 +1,5 @@
 import { AuditWorkbench } from "@/components/audit-workbench";
+import { projectLinks } from "@/lib/project";
 
 const steps = [
   {
@@ -31,6 +32,10 @@ export default function Home() {
         <div className="nav-links">
           <a href="#workbench">Scanner</a>
           <a href="#how-it-works">How it works</a>
+          <a href={projectLinks.demoProof}>Demo proof</a>
+          <a href={projectLinks.github} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
           <span className="network-pill">
             <i aria-hidden="true" />
             Mantle Sepolia
@@ -53,6 +58,15 @@ export default function Home() {
           patterns, explains the risk, proposes a patch, and publishes a
           verifiable audit proof on-chain.
         </p>
+        <div className="hero-actions">
+          <a className="primary-link" href="#workbench">
+            Run the live scanner
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a className="secondary-link" href={projectLinks.demoProof}>
+            Verify a published proof
+          </a>
+        </div>
         <div className="hero-meta">
           <div>
             <strong>10</strong>
@@ -70,6 +84,29 @@ export default function Home() {
       </section>
 
       <AuditWorkbench />
+
+      <section className="evidence shell" aria-labelledby="evidence-title">
+        <div>
+          <span className="section-kicker">Transparent by design</span>
+          <h2 id="evidence-title">A fast review, not a security guarantee.</h2>
+        </div>
+        <div className="evidence-copy">
+          <p>
+            VibeCheck catches high-confidence patterns before a professional
+            audit. It does not replace fuzzing, formal verification, economic
+            review, or an independent human auditor.
+          </p>
+          <div className="evidence-links">
+            <a href={projectLinks.demoProof}>Open demo proof</a>
+            <a href={projectLinks.registry} target="_blank" rel="noreferrer">
+              Verified contract ↗
+            </a>
+            <a href={projectLinks.github} target="_blank" rel="noreferrer">
+              Review the source ↗
+            </a>
+          </div>
+        </div>
+      </section>
 
       <section className="how shell" id="how-it-works">
         <div className="section-heading">
@@ -95,7 +132,15 @@ export default function Home() {
           <span>Mantle VibeCheck</span>
         </div>
         <p>Open-source security infrastructure for the Mantle ecosystem.</p>
-        <span>Hackathon build · 2026</span>
+        <div className="footer-links">
+          <a href={projectLinks.github} target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+          <a href={projectLinks.registry} target="_blank" rel="noreferrer">
+            MantleScan
+          </a>
+          <span>v1.0.0 · 2026</span>
+        </div>
       </footer>
     </main>
   );

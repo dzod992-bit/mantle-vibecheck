@@ -7,9 +7,9 @@ audit proof stored on Mantle.
 
 ## Current status
 
-The current build includes the product UI, deterministic Solidity AST
-analysis, a provider-neutral AI review layer, EIP-712 proof generation, wallet
-publication flow, and the signed on-chain audit registry deployed on
+The `v1.0.0` hackathon release includes the product UI, deterministic Solidity
+AST analysis, a provider-neutral AI review layer, EIP-712 proof generation,
+wallet publication flow, and the signed on-chain audit registry deployed on
 [Mantle Sepolia](https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52).
 MantleScan reports an exact source-code match for the deployed bytecode.
 The public demo is live at

@@ -11,6 +11,7 @@ import {
   publishAuditProof,
 } from "@/lib/review/wallet";
 import { mantleSepoliaExplorerUrl } from "@/lib/contracts/mantle";
+import { projectLinks, projectRelease } from "@/lib/project";
 
 type ApiErrorPayload = {
   error?: string;
@@ -144,7 +145,7 @@ export function AuditWorkbench() {
           <span className="section-kicker">Live product preview</span>
           <h2>Check a contract before it becomes an incident.</h2>
         </div>
-        <span className="demo-badge">Iteration 05 · Testnet release</span>
+        <span className="demo-badge">{projectRelease}</span>
       </div>
 
       <div className="workbench">
@@ -188,6 +189,10 @@ export function AuditWorkbench() {
               <span aria-hidden="true">↗</span>
             </button>
           </div>
+          <p className="editor-disclaimer">
+            Automated pre-audit only. Review every suggested fix and use
+            independent testing before deploying funds.
+          </p>
         </div>
 
         <aside className="report-panel" aria-live="polite">
@@ -367,6 +372,16 @@ export function AuditWorkbench() {
             </div>
           ) : null}
         </aside>
+      </div>
+      <div className="workbench-links">
+        <span>Judge shortcuts</span>
+        <a href={projectLinks.demoProof}>Published proof</a>
+        <a href={projectLinks.registry} target="_blank" rel="noreferrer">
+          Verified registry ↗
+        </a>
+        <a href={projectLinks.github} target="_blank" rel="noreferrer">
+          Public source ↗
+        </a>
       </div>
     </section>
   );
