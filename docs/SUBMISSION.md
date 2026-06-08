@@ -1,96 +1,60 @@
-# Hackathon submission draft
+# Hackathon submission status
 
 ## Project
 
 **Name:** Mantle VibeCheck
 
-**One-line pitch:** AI-assisted security review and immutable audit proofs for
-Solidity contracts built at vibe-coding speed.
+**Track:** AI DevTools
 
-## Problem
+**Pitch:** AI-assisted security review and immutable audit proofs for Solidity
+contracts built at vibe-coding speed.
 
-AI coding tools let developers create Solidity contracts faster than they can
-understand their security assumptions. Existing scanners often return noisy,
-opaque output, while an editable PDF or dashboard does not prove which source
-code was actually reviewed.
+## Ready
 
-## Solution
-
-Mantle VibeCheck combines:
-
-1. deterministic Solidity AST checks with line-level evidence;
-2. a schema-validated AI threat model and remediation plan;
-3. a patched-source preview;
-4. an EIP-712 signed report;
-5. an immutable `AuditRegistry` record on Mantle;
-6. a public proof page that reads the record directly from the chain.
-
-## Why Mantle
-
-- Mantle is the settlement and verification layer for every published audit.
-- Low-cost transactions make one proof per code revision practical.
-- The product directly supports Mantle builders shipping Solidity contracts.
-- The public verifier reads Mantle state rather than trusting an application
-  database.
-
-## AI role
-
-AI is not a decorative chatbot. It converts deterministic findings into a
-coherent threat model, proposes focused remediation, and produces a structured
-review that is validated before its hash can be signed and published.
-
-Source code and comments are treated as untrusted input. Model output must pass
-a strict schema. If the provider is missing or returns invalid output, the
-product transparently switches to a deterministic fallback instead of
-inventing a result.
-
-## Technical architecture
-
-```text
-Solidity source
-  -> solc 0.8.23 AST
-  -> deterministic rule engine
-  -> validated AI review
-  -> canonical report hash
-  -> EIP-712 server signature
-  -> user wallet transaction
-  -> AuditRegistry on Mantle Sepolia
-  -> public on-chain proof page
-```
-
-## Track and awards
-
-- Primary: AI DevTools
-- Additional eligibility: Best UI/UX
-- Target: Deployment Award
-
-## Current verification
-
-- Unit tests: 9
-- Smart contract tests: 5
-- Lint, TypeScript, production build, and npm audit included in CI
-- Contract compiler: Solidity 0.8.23 with optimizer enabled, 200 runs
-
-## Links to fill before submission
-
-- Demo: `https://mantle-vibecheck.vercel.app`
-- GitHub: `https://github.com/dzod992-bit/mantle-vibecheck`
-- Demo video: `TBD`
-- Mantle contract:
-  `https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52`
+- Live demo:
+  `https://mantle-vibecheck.vercel.app`
+- Public GitHub:
+  `https://github.com/dzod992-bit/mantle-vibecheck`
+- Verified Mantle contract:
+  `https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52#code`
+- Sourcify exact match:
+  `https://repo.sourcify.dev/5003/0xDf8E3b1D7332903a0aC6Ed11C078E0c35a62ff52`
+- Public proof:
+  `https://mantle-vibecheck.vercel.app/proof/0xe52b3cc268f564d3a19a22d58393c10da6709c97b42f9a082d442a8d4d728088`
 - Demo proof transaction:
   `https://sepolia.mantlescan.xyz/tx/0x5e37439541426e58fffc56fc1cfb4265ea20824b1db19d79cd4e737e50858ad6`
 - Dedicated signer rotation:
   `https://sepolia.mantlescan.xyz/tx/0x55a7f97eb657e8bdddd26b9ad04f76efa72afbccfbeae7d213674883469dba7f`
 - Owner isolation:
   `https://sepolia.mantlescan.xyz/tx/0xdfd7143b58ed0d2b9831061612ad0a0e049310506cc6bd8d933be5dd34bfebff`
-- Public proof:
-  `https://mantle-vibecheck.vercel.app/proof/0xe52b3cc268f564d3a19a22d58393c10da6709c97b42f9a082d442a8d4d728088`
-- X thread: `TBD`
 
-## Limitations
+## Verification
 
-Mantle VibeCheck is not a replacement for a professional security audit,
-fuzzing, formal verification, invariant tests, or economic review. Its purpose
-is to catch common high-impact mistakes earlier and make each review
-verifiable.
+- 9 unit tests
+- 5 smart-contract tests
+- ESLint and TypeScript checks
+- Production Next.js build
+- Solidity 0.8.23, optimizer 200 runs
+- MantleScan `Source Code Verified`, `Exact Match`
+- Sourcify `exact_match`
+- Production `/api/review` EIP-712 signature validated
+- Public proof matched against Mantle registry
+
+## Owner-only items
+
+- Demo video URL: `TBD`
+- X thread URL: `TBD`
+- DoraHacks final submission: `TBD`
+
+Use:
+
+- `docs/DORAHACKS_SUBMISSION.md`
+- `docs/VIDEO_SCRIPT_RU.md`
+- `docs/X_THREAD.md`
+- `docs/OWNER_CHECKLIST_RU.md`
+
+## Limitation
+
+Mantle VibeCheck is an early security review layer, not a replacement for a
+professional audit, fuzzing, formal verification, invariant testing, or
+economic review.

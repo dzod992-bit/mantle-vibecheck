@@ -32,9 +32,13 @@ console.log(`Verification input written to ${outputPath}`);
 const deploymentPath = resolve("deployments", "mantleSepolia.json");
 try {
   const deployment = JSON.parse(await readFile(deploymentPath, "utf8"));
+  const initialSigner =
+    deployment.constructorArguments?.initialSigner ?? deployment.trustedSigner;
+  const initialOwner =
+    deployment.constructorArguments?.initialOwner ?? deployment.owner;
   const constructorArguments = encodeAbiParameters(
     [{ type: "address" }, { type: "address" }],
-    [deployment.trustedSigner, deployment.owner],
+    [initialSigner, initialOwner],
   ).slice(2);
   const argumentsPath = resolve("AuditRegistry.constructor-args.txt");
   await writeFile(argumentsPath, `${constructorArguments}\n`);

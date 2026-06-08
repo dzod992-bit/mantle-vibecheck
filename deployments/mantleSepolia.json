@@ -3,6 +3,10 @@
   "chainId": 5003,
   "address": "0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52",
   "transactionHash": "0xd94fa1885ecf86854603edcd8483a324fb03a17bbb17178907a0a0c0c8756c32",
+  "constructorArguments": {
+    "initialSigner": "0x54Cf9018B5f143A0D1C7445893C8Bb26C3EABDc0",
+    "initialOwner": "0x54Cf9018B5f143A0D1C7445893C8Bb26C3EABDc0"
+  },
   "owner": "0x8Cb875eBfC339d9D93629d2545dE4265330a5527",
   "trustedSigner": "0x3cA3890c4B30df1c261AD856AADFeEB0C592bdBB",
   "deployedAt": "2026-06-07T13:07:33.650Z",
@@ -25,5 +29,12 @@
   "frontend": {
     "url": "https://mantle-vibecheck.vercel.app",
     "deploymentId": "dpl_CcoXXn5LyqReoBX9Nv32mKZDP5Bf"
+  },
+  "verification": {
+    "provider": "Sourcify",
+    "match": "exact_match",
+    "matchId": "31363024",
+    "verifiedAt": "2026-06-07T18:37:18Z",
+    "url": "https://repo.sourcify.dev/5003/0xDf8E3b1D7332903a0aC6Ed11C078E0c35a62ff52"
   }
 }

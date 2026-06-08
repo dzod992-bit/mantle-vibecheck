@@ -17,7 +17,8 @@
     "contracts:deploy:mantle": "hardhat run scripts/deploy-audit-registry.ts --network mantleSepolia",
     "contracts:rotate-owner:mantle": "hardhat run scripts/rotate-owner.ts --network mantleSepolia",
     "contracts:rotate-signer:mantle": "hardhat run scripts/rotate-trusted-signer.ts --network mantleSepolia",
-    "contracts:verification-input": "node scripts/export-verification-input.mjs"
+    "contracts:verification-input": "node scripts/export-verification-input.mjs",
+    "contracts:verify:sourcify": "npm run contracts:verification-input && node scripts/verify-sourcify.mjs"
   },
   "dependencies": {
     "next": "16.2.7",

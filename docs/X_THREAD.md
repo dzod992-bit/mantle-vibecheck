@@ -1,63 +1,71 @@
-# X thread draft
+# X thread
+
+Publish from the project owner's public account. Replace
+`[DEMO_VIDEO_URL]` before posting.
 
 ## Post 1
 
-We built Mantle VibeCheck for #MantleAIHackathon.
+We built Mantle VibeCheck for #MantleAIHackathon by @Mantle_Official.
 
-AI can generate Solidity in seconds. VibeCheck helps builders understand the
-risk, patch the code, and publish an immutable audit proof on Mantle.
+AI can generate Solidity in seconds. VibeCheck finds high-confidence security
+risks, explains and patches them, then publishes a verifiable audit proof on
+Mantle.
 
-[DEMO VIDEO]
+Demo: https://mantle-vibecheck.vercel.app
+
+[Attach demo video: `[DEMO_VIDEO_URL]`]
 
 ## Post 2
 
-The scanner starts with deterministic analysis, not an AI guess:
+The scanner begins with reproducible analysis, not an AI guess:
 
-- solc 0.8.23 AST
+- Solidity 0.8.23 AST
 - reentrancy and call-order checks
-- authorization risks
+- authorization risks such as tx.origin
 - dangerous low-level calls
-- line-level evidence and reproducible scoring
+- line-level evidence and deterministic scoring
 
-[SCREENSHOT: findings]
+[Attach findings screenshot]
 
 ## Post 3
 
-AI turns verified findings into a threat model and focused remediation.
+AI converts those findings into a structured threat model and focused
+remediation.
 
-Source comments are treated as untrusted input. Output is schema validated. If
-the model fails, the UI explicitly switches to a deterministic fallback.
+Source comments are untrusted input, output must pass a strict schema, and the
+product transparently falls back to deterministic reasoning when no model is
+configured.
 
-[SCREENSHOT: threat model]
+[Attach threat-model screenshot]
 
 ## Post 4
 
-Every publishable report is bound to:
+Each publishable review is bound to its code hash, report hash, model hash,
+score, severity counts, publisher, expiry, and nonce.
 
-- code hash
-- report hash
-- model hash
-- score and severity counts
-- publisher, expiry, and nonce
-
-The backend signs this payload with EIP-712. The user publishes it through
-their own wallet.
+The backend signs the EIP-712 payload. The user publishes it from their own
+wallet, so the app cannot silently rewrite the on-chain result.
 
 ## Post 5
 
-The final proof lives in `AuditRegistry` on Mantle Sepolia.
+The proof lives in AuditRegistry on Mantle Sepolia.
 
-Anyone can open `/proof/<auditId>` and read the immutable record directly from
-Mantle instead of trusting our database or a mutable PDF.
+The contract is source-verified with an exact bytecode match, and the public
+proof page reads Mantle state directly instead of trusting a private database
+or editable PDF.
 
-[MANTLESCAN CONTRACT]
+Contract:
+https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52#code
 
 ## Post 6
 
-Demo: [URL]
-GitHub: [URL]
-Contract: [URL]
-Public proof: [URL]
+Try Mantle VibeCheck:
+https://mantle-vibecheck.vercel.app
 
-Built for the AI DevTools track, with a focus on real Mantle utility,
-transparent AI, and Web2-friendly UX.
+GitHub:
+https://github.com/dzod992-bit/mantle-vibecheck
+
+Public proof:
+https://mantle-vibecheck.vercel.app/proof/0xe52b3cc268f564d3a19a22d58393c10da6709c97b42f9a082d442a8d4d728088
+
+Built for the AI DevTools track. #MantleAIHackathon

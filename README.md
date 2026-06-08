@@ -11,6 +11,7 @@ The current build includes the product UI, deterministic Solidity AST
 analysis, a provider-neutral AI review layer, EIP-712 proof generation, wallet
 publication flow, and the signed on-chain audit registry deployed on
 [Mantle Sepolia](https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52).
+MantleScan reports an exact source-code match for the deployed bytecode.
 The public demo is live at
 [mantle-vibecheck.vercel.app](https://mantle-vibecheck.vercel.app).
 Deployment details are in
@@ -38,6 +39,7 @@ npm run contracts:compile
 npm run contracts:test
 npm run contracts:deploy:local
 npm run contracts:verification-input
+npm run contracts:verify:sourcify
 ```
 
 `AuditRegistry` verifies an EIP-712 signature from the configured trusted
@@ -83,5 +85,7 @@ This project targets the AI DevTools track of Mantle's Turing Test Hackathon
 - [Development roadmap](docs/ROADMAP.md)
 - [Deployment guide](docs/DEPLOYMENT_RU.md)
 - [Submission draft](docs/SUBMISSION.md)
-- [Demo script](docs/DEMO_SCRIPT.md)
+- [DoraHacks submission](docs/DORAHACKS_SUBMISSION.md)
+- [Demo video script](docs/VIDEO_SCRIPT_RU.md)
+- [X thread](docs/X_THREAD.md)
 - [Security model](docs/SECURITY.md)
