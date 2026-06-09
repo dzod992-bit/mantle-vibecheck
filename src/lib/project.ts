@@ -7,4 +7,4 @@ export const projectLinks = {
     "/proof/0xe52b3cc268f564d3a19a22d58393c10da6709c97b42f9a082d442a8d4d728088",
 } as const;
 
-export const projectRelease = "v1.0.0 · Hackathon release";
+export const projectRelease = "v1.1.0 | Live AI release";

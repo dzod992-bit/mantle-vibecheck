@@ -1,5 +1,5 @@
 import { AuditWorkbench } from "@/components/audit-workbench";
-import { projectLinks } from "@/lib/project";
+import { projectLinks, projectRelease } from "@/lib/project";
 
 const steps = [
   {
@@ -139,7 +139,7 @@ export default function Home() {
           <a href={projectLinks.registry} target="_blank" rel="noreferrer">
             MantleScan
           </a>
-          <span>v1.0.0 · 2026</span>
+          <span>{projectRelease}</span>
         </div>
       </footer>
     </main>

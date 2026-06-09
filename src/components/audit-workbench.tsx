@@ -421,6 +421,16 @@ function AiReviewPanel({ review }: { review: ReviewResponse }) {
           <pre>{review.ai.patchedSource}</pre>
         </details>
       ) : null}
+      {review.ai.limitations.length > 0 ? (
+        <details className="review-limitations">
+          <summary>Review limitations</summary>
+          <ul>
+            {review.ai.limitations.map((limitation) => (
+              <li key={limitation}>{limitation}</li>
+            ))}
+          </ul>
+        </details>
+      ) : null}
     </section>
   );
 }

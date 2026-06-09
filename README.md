@@ -7,7 +7,7 @@ audit proof stored on Mantle.
 
 ## Current status
 
-The `v1.0.0` hackathon release includes the product UI, deterministic Solidity
+The `v1.1.0` hackathon release includes the product UI, deterministic Solidity
 AST analysis, a provider-neutral AI review layer, EIP-712 proof generation,
 wallet publication flow, and the signed on-chain audit registry deployed on
 [Mantle Sepolia](https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52).
@@ -53,7 +53,7 @@ For live model reasoning, configure:
 
 ```text
 AI_API_KEY=...
-AI_MODEL=...
+AI_MODEL=gpt-4.1-mini
 AI_API_BASE_URL=https://api.openai.com/v1
 ```
 
