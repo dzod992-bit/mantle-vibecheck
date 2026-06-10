@@ -120,6 +120,9 @@ without using the web UI.
 - Machine-readable benchmark report
 - Accuracy and regression checks in CI
 
+Exit condition: every deterministic rule has committed evidence, and CI fails
+when actual findings diverge from the versioned labels.
+
 ## Iteration 13 - Judge Center and demo polish
 
 - Single judge-facing evidence page

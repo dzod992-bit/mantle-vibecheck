@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "hardhat compile && next build",
+    "benchmark": "tsx src/cli/benchmark.ts",
     "start": "next start",
     "lint": "eslint .",
     "scan": "tsx src/cli/vibecheck.ts",

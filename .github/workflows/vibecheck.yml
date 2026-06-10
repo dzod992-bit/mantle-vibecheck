@@ -4,6 +4,7 @@ on:
   push:
     branches: ["main"]
     paths:
+      - "benchmark/**"
       - "contracts/**/*.sol"
       - "src/lib/audit/**"
       - "src/cli/**"
@@ -12,6 +13,7 @@ on:
       - ".github/workflows/vibecheck.yml"
   pull_request:
     paths:
+      - "benchmark/**"
       - "contracts/**/*.sol"
       - "src/lib/audit/**"
       - "src/cli/**"
@@ -42,3 +44,6 @@ jobs:
 
       - name: Scan Solidity contracts
         run: npm run scan -- contracts --fail-on high
+
+      - name: Run reproducible rule benchmark
+        run: npm run benchmark

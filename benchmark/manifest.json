@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "cases": [
+    {
+      "id": "safe-vault",
+      "title": "Checks-effects-interactions safe control",
+      "file": "benchmark/contracts/SafeVault.sol",
+      "expectedRuleIds": []
+    },
+    {
+      "id": "vulnerable-vault",
+      "title": "Reentrancy and unsafe authorization",
+      "file": "benchmark/contracts/VulnerableVault.sol",
+      "expectedRuleIds": [
+        "floating-pragma",
+        "reentrancy-state-after-call",
+        "sensitive-function-access",
+        "transfer-stipend",
+        "tx-origin-auth"
+      ]
+    },
+    {
+      "id": "unsafe-calls",
+      "title": "Unchecked call and selfdestruct",
+      "file": "benchmark/contracts/UnsafeCalls.sol",
+      "expectedRuleIds": [
+        "selfdestruct",
+        "unchecked-low-level-call"
+      ]
+    },
+    {
+      "id": "delegate-executor",
+      "title": "Raw delegatecall",
+      "file": "benchmark/contracts/DelegateExecutor.sol",
+      "expectedRuleIds": [
+        "delegatecall",
+        "unchecked-low-level-call"
+      ]
+    },
+    {
+      "id": "weak-lottery",
+      "title": "Manipulable block randomness",
+      "file": "benchmark/contracts/WeakLottery.sol",
+      "expectedRuleIds": [
+        "weak-randomness"
+      ]
+    },
+    {
+      "id": "unbounded-distributor",
+      "title": "State mutation in a dynamic loop",
+      "file": "benchmark/contracts/UnboundedDistributor.sol",
+      "expectedRuleIds": [
+        "unbounded-loop"
+      ]
+    }
+  ]
+}

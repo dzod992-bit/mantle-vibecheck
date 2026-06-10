@@ -30,10 +30,12 @@ contracts built at vibe-coding speed.
 
 ## Verification
 
-- 17 unit and integration tests
+- 18 unit and integration tests
 - 5 smart-contract tests
 - Local Solidity CLI with project import resolution
 - GitHub Actions severity gate
+- Reproducible 6-case benchmark covering all 10 deterministic rules
+- Benchmark result: 11 TP, 0 FP, 0 FN on the versioned corpus
 - ESLint and TypeScript checks
 - Production Next.js build
 - Solidity 0.8.23, optimizer 200 runs

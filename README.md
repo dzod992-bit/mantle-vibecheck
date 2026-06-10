@@ -50,6 +50,21 @@ arguments or Solidity compilation errors. The
 the scanner as a focused GitHub Actions check. Project-scoped imports,
 including installed OpenZeppelin packages, are resolved for local scans.
 
+## Reproducible benchmark
+
+Run the versioned rule-level benchmark:
+
+```bash
+npm run benchmark
+npm run benchmark -- --format json
+```
+
+The corpus covers all 10 deterministic rules plus a safe negative control.
+Every case declares its expected rule IDs in
+[`benchmark/manifest.json`](benchmark/manifest.json). CI fails on false
+positives, false negatives, or any non-exact case match. The current evidence
+report is documented in [`docs/BENCHMARK.md`](docs/BENCHMARK.md).
+
 ## Smart contracts
 
 ```bash

@@ -86,8 +86,10 @@ Solidity source
 
 ## Validation
 
-- 17 unit/integration tests and 5 contract tests
+- 18 unit/integration tests and 5 contract tests
 - Local Solidity CLI and GitHub Actions severity gate
+- Reproducible 6-case benchmark covering all 10 deterministic rules
+- 11 TP, 0 FP, and 0 FN on the committed regression corpus
 - CI covers compile, lint, typecheck, tests, build, and dependency audit
 - Production API signature validated against the on-chain trusted signer
 - Demo proof confirmed through the public verifier
