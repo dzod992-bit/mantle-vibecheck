@@ -8,6 +8,7 @@
     "build": "hardhat compile && next build",
     "start": "next start",
     "lint": "eslint .",
+    "scan": "tsx src/cli/vibecheck.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run && hardhat test",
     "test:unit": "vitest run",
@@ -43,6 +44,7 @@
     "eslint-config-next": "16.2.7",
     "hardhat": "^3.8.0",
     "tailwindcss": "4.3.0",
+    "tsx": "^4.22.4",
     "typescript": "6.0.3",
     "vitest": "^4.1.8"
   },

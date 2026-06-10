@@ -32,6 +32,24 @@ npm test
 
 Open `http://localhost:3000`.
 
+## CLI and CI
+
+Run the same deterministic engine locally or as a pull-request gate:
+
+```bash
+npm run scan -- contracts
+npm run scan -- contracts --fail-on critical
+npm run scan -- contracts --format json --fail-on none
+npm run scan -- examples/VulnerableVault.sol --fail-on high
+```
+
+The CLI recursively discovers `.sol` files. It exits with code `1` when a
+finding meets the configured severity threshold and code `2` for invalid
+arguments or Solidity compilation errors. The
+[`VibeCheck Solidity`](.github/workflows/vibecheck.yml) workflow demonstrates
+the scanner as a focused GitHub Actions check. Project-scoped imports,
+including installed OpenZeppelin packages, are resolved for local scans.
+
 ## Smart contracts
 
 ```bash

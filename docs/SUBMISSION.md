@@ -30,8 +30,10 @@ contracts built at vibe-coding speed.
 
 ## Verification
 
-- 9 unit tests
+- 17 unit and integration tests
 - 5 smart-contract tests
+- Local Solidity CLI with project import resolution
+- GitHub Actions severity gate
 - ESLint and TypeScript checks
 - Production Next.js build
 - Solidity 0.8.23, optimizer 200 runs

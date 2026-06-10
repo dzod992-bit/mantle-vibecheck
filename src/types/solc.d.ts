@@ -1,6 +1,11 @@
 declare module "solc" {
+  type ImportResult = { contents: string } | { error: string };
+
   type Solc = {
-    compile(input: string): string;
+    compile(
+      input: string,
+      callbacks?: { import?: (path: string) => ImportResult },
+    ): string;
     version(): string;
   };
 

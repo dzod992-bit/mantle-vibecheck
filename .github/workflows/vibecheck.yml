@@ -1,0 +1,44 @@
+name: VibeCheck Solidity
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "contracts/**/*.sol"
+      - "src/lib/audit/**"
+      - "src/cli/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/vibecheck.yml"
+  pull_request:
+    paths:
+      - "contracts/**/*.sol"
+      - "src/lib/audit/**"
+      - "src/cli/**"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/vibecheck.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  solidity-security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Scan Solidity contracts
+        run: npm run scan -- contracts --fail-on high

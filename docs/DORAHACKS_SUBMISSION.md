@@ -86,7 +86,8 @@ Solidity source
 
 ## Validation
 
-- 9 unit tests and 5 contract tests
+- 17 unit/integration tests and 5 contract tests
+- Local Solidity CLI and GitHub Actions severity gate
 - CI covers compile, lint, typecheck, tests, build, and dependency audit
 - Production API signature validated against the on-chain trusted signer
 - Demo proof confirmed through the public verifier

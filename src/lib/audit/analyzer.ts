@@ -36,6 +36,14 @@ type SolcOutput = {
   sources?: Record<string, { ast?: AstNode }>;
 };
 
+export type SolidityImportResolver = (
+  path: string,
+) => { contents: string } | { error: string };
+
+type AnalyzeOptions = {
+  importResolver?: SolidityImportResolver;
+};
+
 const severityPenalty: Record<FindingSeverity, number> = {
   critical: 30,
   high: 18,
@@ -56,8 +64,9 @@ export class AuditCompilationError extends Error {
 export function analyzeSolidity(
   source: string,
   filename = "Contract.sol",
+  options: AnalyzeOptions = {},
 ): AuditReport {
-  const output = compileSource(source, filename);
+  const output = compileSource(source, filename, options.importResolver);
   const diagnostics = normalizeDiagnostics(source, output.errors ?? []);
   const errors = diagnostics.filter((diagnostic) => diagnostic.severity === "error");
 
@@ -130,7 +139,11 @@ export function analyzeSolidity(
   };
 }
 
-function compileSource(source: string, filename: string): SolcOutput {
+function compileSource(
+  source: string,
+  filename: string,
+  importResolver?: SolidityImportResolver,
+): SolcOutput {
   const input = {
     language: "Solidity",
     sources: {
@@ -148,7 +161,11 @@ function compileSource(source: string, filename: string): SolcOutput {
     },
   };
 
-  return JSON.parse(solc.compile(JSON.stringify(input))) as SolcOutput;
+  const callbacks =
+    importResolver === undefined ? undefined : { import: importResolver };
+  return JSON.parse(
+    solc.compile(JSON.stringify(input), callbacks),
+  ) as SolcOutput;
 }
 
 function normalizeDiagnostics(

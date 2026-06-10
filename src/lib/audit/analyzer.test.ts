@@ -46,6 +46,26 @@ contract Unsafe {
     expect(ruleIds).toContain("selfdestruct");
   });
 
+  it("supports explicit import resolution for local developer tooling", () => {
+    const source = `// SPDX-License-Identifier: MIT
+pragma solidity 0.8.23;
+import {Guard} from "./Guard.sol";
+contract UsesGuard is Guard {}`;
+    const importedSource = `// SPDX-License-Identifier: MIT
+pragma solidity 0.8.23;
+contract Guard {}`;
+
+    const report = analyzeSolidity(source, "contracts/UsesGuard.sol", {
+      importResolver: (path) =>
+        path.endsWith("Guard.sol")
+          ? { contents: importedSource }
+          : { error: "Import not found" },
+    });
+
+    expect(report.filename).toBe("contracts/UsesGuard.sol");
+    expect(report.risk).toBe("pass");
+  });
+
   it("returns structured compiler errors", () => {
     expect(() =>
       analyzeSolidity("pragma solidity 0.8.23; contract Broken {", "Broken.sol"),

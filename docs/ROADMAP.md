@@ -86,6 +86,53 @@ Status: completed in commit `472f3fa`.
 Exit condition: repository, demo, contract, proof, verification, and
 submission copy are public; only owner-authenticated posting remains.
 
+## Iteration 9 - Hackathon release candidate
+
+- Judge shortcuts and transparent product limitations
+- Responsive production QA
+- Versioned `v1.0.0-hackathon` release candidate
+
+Status: completed in commit `6cac189`.
+
+## Iteration 10 - Validated live AI reviews
+
+- OpenAI-compatible production configuration
+- Finding allowlist and prompt-injection controls
+- AI patch compilation and deterministic score validation
+- Safe provider error codes and visible review limitations
+
+Status: completed in commit `0edee1c`.
+
+## Iteration 11 - Developer workflow integration
+
+- Local recursive Solidity CLI
+- Text and JSON output
+- Configurable CI failure threshold
+- Focused GitHub Actions pull-request workflow
+
+Exit condition: another Mantle developer can add VibeCheck to a repository
+without using the web UI.
+
+## Iteration 12 - Reproducible benchmark evidence
+
+- Versioned vulnerable and safe Solidity fixtures
+- Expected rule-level outcomes
+- Machine-readable benchmark report
+- Accuracy and regression checks in CI
+
+## Iteration 13 - Judge Center and demo polish
+
+- Single judge-facing evidence page
+- Architecture, proof, benchmark, and workflow links
+- Business model and post-hackathon roadmap
+- Updated video path and submission copy
+
+## Iteration 14 - Submission freeze
+
+- Full production and mobile smoke test
+- Final DoraHacks, video, and X assets
+- Release tag and immutable submission checklist
+
 ## Scope controls
 
 The hackathon MVP is not a replacement for a professional audit. It focuses
