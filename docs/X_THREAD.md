@@ -12,6 +12,7 @@ risks, explains and patches them, then publishes a verifiable audit proof on
 Mantle.
 
 Demo: https://mantle-vibecheck.vercel.app
+Judge evidence: https://mantle-vibecheck.vercel.app/judges
 
 [Attach demo video: `[DEMO_VIDEO_URL]`]
 
@@ -29,6 +30,19 @@ The scanner begins with reproducible analysis, not an AI guess:
 
 ## Post 3
 
+The same engine also runs as a local CLI and GitHub Actions severity gate.
+
+Our public regression corpus covers all 10 deterministic rules:
+
+- 6/6 exact case matches
+- 11 true positives
+- 0 false positives
+- 0 false negatives
+
+[Attach Judge Center benchmark screenshot]
+
+## Post 4
+
 AI converts those findings into a structured threat model and focused
 remediation.
 
@@ -38,7 +52,7 @@ configured.
 
 [Attach threat-model screenshot]
 
-## Post 4
+## Post 5
 
 Each publishable review is bound to its code hash, report hash, model hash,
 score, severity counts, publisher, expiry, and nonce.
@@ -46,7 +60,7 @@ score, severity counts, publisher, expiry, and nonce.
 The backend signs the EIP-712 payload. The user publishes it from their own
 wallet, so the app cannot silently rewrite the on-chain result.
 
-## Post 5
+## Post 6
 
 The proof lives in AuditRegistry on Mantle Sepolia.
 
@@ -57,7 +71,7 @@ or editable PDF.
 Contract:
 https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52#code
 
-## Post 6
+## Post 7
 
 Try Mantle VibeCheck:
 https://mantle-vibecheck.vercel.app
@@ -67,5 +81,8 @@ https://github.com/dzod992-bit/mantle-vibecheck
 
 Public proof:
 https://mantle-vibecheck.vercel.app/proof/0xe52b3cc268f564d3a19a22d58393c10da6709c97b42f9a082d442a8d4d728088
+
+Judge Center:
+https://mantle-vibecheck.vercel.app/judges
 
 Built for the AI DevTools track. #MantleAIHackathon

@@ -11,6 +11,8 @@ audit proofs on Mantle.
 
 **Demo:** https://mantle-vibecheck.vercel.app
 
+**Judge Center:** https://mantle-vibecheck.vercel.app/judges
+
 **Repository:** https://github.com/dzod992-bit/mantle-vibecheck
 
 **Contract:**
@@ -40,11 +42,12 @@ Mantle VibeCheck follows one evidence-based flow:
 
 1. Compile Solidity 0.8.23 and inspect its AST.
 2. Run deterministic high-confidence security rules.
-3. Convert findings into a schema-validated threat model and patch.
-4. Hash the source and canonical report.
-5. Sign the audit payload with EIP-712.
-6. Let the developer publish the proof from their wallet.
-7. Verify the immutable record through a public Mantle-backed proof page.
+3. Reuse the same engine through a local CLI and pull-request severity gate.
+4. Convert findings into a schema-validated threat model and patch.
+5. Hash the source and canonical report.
+6. Sign the audit payload with EIP-712.
+7. Let the developer publish the proof from their wallet.
+8. Verify the immutable record through a public Mantle-backed proof page.
 
 ## Why Mantle
 

@@ -28,9 +28,9 @@
   },
   "frontend": {
     "url": "https://mantle-vibecheck.vercel.app",
-    "deploymentId": "dpl_Foxzf2apiuxcaBgRq3gtf34eJbDX",
-    "release": "v1.1.0",
-    "deployedAt": "2026-06-10T17:38:29Z"
+    "deploymentId": "dpl_7JhVyMBdzthN6QH1kzew9YkA2QVQ",
+    "release": "v1.2.0",
+    "deployedAt": "2026-06-10T18:25:15Z"
   },
   "verification": {
     "provider": "Sourcify",

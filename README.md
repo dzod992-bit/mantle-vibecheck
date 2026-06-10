@@ -7,13 +7,16 @@ audit proof stored on Mantle.
 
 ## Current status
 
-The `v1.1.0` hackathon release includes the product UI, deterministic Solidity
+The `v1.2.0` hackathon release includes the product UI, deterministic Solidity
 AST analysis, a provider-neutral AI review layer, EIP-712 proof generation,
 wallet publication flow, and the signed on-chain audit registry deployed on
 [Mantle Sepolia](https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52).
 MantleScan reports an exact source-code match for the deployed bytecode.
 The public demo is live at
 [mantle-vibecheck.vercel.app](https://mantle-vibecheck.vercel.app).
+Judges can review the benchmark, architecture, workflow, business model, and
+on-chain evidence in the public
+[Judge Center](https://mantle-vibecheck.vercel.app/judges).
 Deployment details are in
 [docs/DEPLOYMENT_RU.md](docs/DEPLOYMENT_RU.md).
 
@@ -122,3 +125,4 @@ This project targets the AI DevTools track of Mantle's Turing Test Hackathon
 - [Demo video script](docs/VIDEO_SCRIPT_RU.md)
 - [X thread](docs/X_THREAD.md)
 - [Security model](docs/SECURITY.md)
+- [Judge Center](https://mantle-vibecheck.vercel.app/judges)

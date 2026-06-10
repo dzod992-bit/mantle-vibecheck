@@ -13,6 +13,8 @@ contracts built at vibe-coding speed.
 
 - Live demo:
   `https://mantle-vibecheck.vercel.app`
+- Judge Center:
+  `https://mantle-vibecheck.vercel.app/judges`
 - Public GitHub:
   `https://github.com/dzod992-bit/mantle-vibecheck`
 - Verified Mantle contract:

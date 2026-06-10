@@ -130,6 +130,9 @@ when actual findings diverge from the versioned labels.
 - Business model and post-hackathon roadmap
 - Updated video path and submission copy
 
+Exit condition: a judge can verify the product, benchmark, developer workflow,
+Mantle integration, limitations, and business model from one public page.
+
 ## Iteration 14 - Submission freeze
 
 - Full production and mobile smoke test

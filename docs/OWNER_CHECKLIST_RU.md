@@ -9,6 +9,8 @@
   `https://github.com/dzod992-bit/mantle-vibecheck`
 - Production demo:
   `https://mantle-vibecheck.vercel.app`
+- Judge Center:
+  `https://mantle-vibecheck.vercel.app/judges`
 - Контракт в Mantle Sepolia:
   `0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52`
 - Контракт имеет `Source Code Verified` и `Exact Match` на MantleScan.
@@ -34,8 +36,8 @@
 
 1. Откройте `docs/VIDEO_SCRIPT_RU.md`.
 2. Записывайте экран в разрешении не ниже 1080p.
-3. Покажите live demo, результат сканирования, threat model, public proof и
-   verified contract.
+3. Начните с Judge Center, затем покажите live scan, benchmark/CI, threat
+   model, public proof и verified contract.
 4. Не показывайте `.env`, private keys, seed phrase, Vercel environment
    variables или содержимое буфера обмена.
 5. Загрузите видео на YouTube как `Public` или `Unlisted`.

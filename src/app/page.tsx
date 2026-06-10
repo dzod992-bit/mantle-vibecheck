@@ -32,6 +32,7 @@ export default function Home() {
         <div className="nav-links">
           <a href="#workbench">Scanner</a>
           <a href="#how-it-works">How it works</a>
+          <a href={projectLinks.judges}>Judge Center</a>
           <a href={projectLinks.demoProof}>Demo proof</a>
           <a href={projectLinks.github} target="_blank" rel="noreferrer">
             GitHub
@@ -65,6 +66,9 @@ export default function Home() {
           </a>
           <a className="secondary-link" href={projectLinks.demoProof}>
             Verify a published proof
+          </a>
+          <a className="secondary-link" href={projectLinks.judges}>
+            Judge evidence
           </a>
         </div>
         <div className="hero-meta">
@@ -104,6 +108,7 @@ export default function Home() {
             <a href={projectLinks.github} target="_blank" rel="noreferrer">
               Review the source ↗
             </a>
+            <a href={projectLinks.judges}>Open Judge Center</a>
           </div>
         </div>
       </section>

@@ -1,11 +1,13 @@
 # Сценарий demo video
 
-Целевая длительность: 2 минуты 40 секунд. Записывайте весь экран, но заранее
+Целевая длительность: 2 минуты 55 секунд. Записывайте весь экран, но заранее
 закройте `.env`, Vercel Settings, password manager и вкладки с кошельком.
 
-## 0:00-0:20 - Проблема
+## 0:00-0:18 - Проблема и Judge Center
 
-Покажите главную страницу.
+Откройте:
+
+`https://mantle-vibecheck.vercel.app/judges`
 
 Текст:
 
@@ -14,7 +16,7 @@
 > vibe-coded контракт в понятный security review и проверяемое on-chain
 > доказательство.
 
-## 0:20-0:55 - Детерминированный scan
+## 0:18-0:53 - Детерминированный scan
 
 1. Покажите sample `VibeVault`.
 2. Нажмите `Run VibeCheck`.
@@ -26,7 +28,7 @@
 > Он находит опасные паттерны, показывает точную строку и рассчитывает
 > детерминированный score.
 
-## 0:55-1:30 - Threat model и patch
+## 0:53-1:23 - Threat model и patch
 
 1. Покажите executive summary.
 2. Пролистайте assets, threats и controls.
@@ -40,7 +42,18 @@
 > недоступен, приложение честно показывает deterministic fallback, а не
 > выдумывает результат.
 
-## 1:30-1:55 - Подписанный proof
+## 1:23-1:48 - CLI, CI и benchmark
+
+Вернитесь в Judge Center. Покажите карточки `CLI + CI gate` и
+`11 TP · 0 FP · 0 FN`, затем откройте benchmark.
+
+Текст:
+
+> Тот же движок запускается локально и в pull request. Версионированный
+> benchmark покрывает все 10 правил: шесть exact-match cases, 11 true
+> positives, без false positives и false negatives на публичном corpus.
+
+## 1:48-2:12 - Подписанный proof
 
 Покажите блок публикации. Для стабильной записи видео можно использовать уже
 опубликованный proof и не отправлять повторную транзакцию.
@@ -51,7 +64,7 @@
 > counts, publisher, expiry и nonce. Backend подписывает EIP-712 payload, а
 > пользователь публикует его собственным кошельком.
 
-## 1:55-2:20 - Public proof
+## 2:12-2:34 - Public proof
 
 Откройте:
 
@@ -64,7 +77,7 @@
 > Public proof page читает запись напрямую из Mantle. Проверяющему не нужно
 > доверять нашей базе данных или изменяемому PDF.
 
-## 2:20-2:35 - Verified contract
+## 2:34-2:47 - Verified contract
 
 Откройте:
 
@@ -73,11 +86,12 @@
 Покажите `Source Code Verified`, `Exact Match`, Solidity 0.8.23 и Read/Write
 tabs.
 
-## 2:35-2:40 - Финал
+## 2:47-2:55 - Финал
 
 Текст:
 
 > Mantle VibeCheck помогает выпускать контракты со скоростью AI, не заставляя
-> пользователей доверять непрозрачному security badge.
+> пользователей доверять непрозрачному security badge. Open-source CLI
+> создаёт adoption, а team workflow и proof API дают путь к монетизации.
 
-Покажите demo URL и GitHub.
+Покажите Judge Center, demo URL и GitHub.
