@@ -126,3 +126,4 @@ This project targets the AI DevTools track of Mantle's Turing Test Hackathon
 - [X thread](docs/X_THREAD.md)
 - [Security model](docs/SECURITY.md)
 - [Judge Center](https://mantle-vibecheck.vercel.app/judges)
+- [Release freeze](docs/RELEASE_FREEZE.md)

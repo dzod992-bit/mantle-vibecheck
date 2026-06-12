@@ -32,6 +32,7 @@ contracts built at vibe-coding speed.
 
 ## Verification
 
+- Release candidate: `v1.2.0-hackathon`
 - 18 unit and integration tests
 - 5 smart-contract tests
 - Local Solidity CLI with project import resolution
@@ -51,6 +52,10 @@ contracts built at vibe-coding speed.
 - Demo video URL: `TBD`
 - X thread URL: `TBD`
 - DoraHacks final submission: `TBD`
+
+The OpenAI account currently has insufficient API quota. The production
+fallback remains functional and transparent; API billing is optional for the
+hackathon submission.
 
 Use:
 

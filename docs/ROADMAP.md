@@ -139,6 +139,9 @@ Mantle integration, limitations, and business model from one public page.
 - Final DoraHacks, video, and X assets
 - Release tag and immutable submission checklist
 
+Exit condition: the release candidate is tagged, public evidence is reachable,
+and only owner-authenticated posting remains.
+
 ## Scope controls
 
 The hackathon MVP is not a replacement for a professional audit. It focuses
