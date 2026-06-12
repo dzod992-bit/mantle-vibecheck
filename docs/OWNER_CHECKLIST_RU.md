@@ -50,14 +50,15 @@
 
 ## 2. Записать demo video
 
-1. Откройте `docs/VIDEO_SCRIPT_RU.md`.
-2. Записывайте экран в разрешении не ниже 1080p.
-3. Начните с Judge Center, затем покажите live scan, benchmark/CI, threat
+1. Откройте подробный маршрут `docs/VIDEO_RECORDING_GUIDE_RU.md`.
+2. Для короткого текста отдельно используйте `docs/VIDEO_SCRIPT_RU.md`.
+3. Записывайте экран в разрешении не ниже 1080p.
+4. Начните с Judge Center, затем покажите live scan, benchmark/CI, threat
    model, public proof и verified contract.
-4. Не показывайте `.env`, private keys, seed phrase, Vercel environment
+5. Не показывайте `.env`, private keys, seed phrase, Vercel environment
    variables или содержимое буфера обмена.
-5. Загрузите видео на YouTube как `Public` или `Unlisted`.
-6. Сохраните публичную ссылку.
+6. Загрузите видео на YouTube как `Public` или `Unlisted`.
+7. Проверьте ссылку в Incognito и сохраните её.
 
 ## 3. Опубликовать X thread
 

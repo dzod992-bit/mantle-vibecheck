@@ -123,6 +123,7 @@ This project targets the AI DevTools track of Mantle's Turing Test Hackathon
 - [Submission draft](docs/SUBMISSION.md)
 - [DoraHacks submission](docs/DORAHACKS_SUBMISSION.md)
 - [Demo video script](docs/VIDEO_SCRIPT_RU.md)
+- [Detailed video recording guide](docs/VIDEO_RECORDING_GUIDE_RU.md)
 - [X thread](docs/X_THREAD.md)
 - [Security model](docs/SECURITY.md)
 - [Judge Center](https://mantle-vibecheck.vercel.app/judges)

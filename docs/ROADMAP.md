@@ -142,6 +142,15 @@ Mantle integration, limitations, and business model from one public page.
 Exit condition: the release candidate is tagged, public evidence is reachable,
 and only owner-authenticated posting remains.
 
+## Iteration 15 - Owner recording handoff
+
+- Exact browser tab order and click-by-click recording route
+- English and Russian narration variants
+- YouTube upload title, description, subtitles, and privacy checks
+
+Exit condition: the owner can record and publish the demo without navigating
+development or hosting settings.
+
 ## Scope controls
 
 The hackathon MVP is not a replacement for a professional audit. It focuses
