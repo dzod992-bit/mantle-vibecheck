@@ -51,7 +51,8 @@ contracts built at vibe-coding speed.
 
 - Demo video URL: `https://youtu.be/NL1N_MQqx9I`
 - X thread URL: `https://x.com/BybassBuild/status/2065840319720034460`
-- DoraHacks final submission: `TBD`
+- DoraHacks final submission: `https://dorahacks.io/buidl/44914`
+- Submission status: `Submitted for review`
 
 The OpenAI account currently has insufficient API quota. The production
 fallback remains functional and transparent; API billing is optional for the

@@ -22,6 +22,10 @@ https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff5
 
 **X thread:** https://x.com/BybassBuild/status/2065840319720034460
 
+**DoraHacks BUIDL:** https://dorahacks.io/buidl/44914
+
+**Submission status:** Submitted for review
+
 ## Short description
 
 Mantle VibeCheck is an AI-assisted security review tool for Solidity contracts
