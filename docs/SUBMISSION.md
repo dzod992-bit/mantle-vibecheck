@@ -49,7 +49,7 @@ contracts built at vibe-coding speed.
 
 ## Owner-only items
 
-- Demo video URL: `TBD`
+- Demo video URL: `https://youtu.be/NL1N_MQqx9I`
 - X thread URL: `TBD`
 - DoraHacks final submission: `TBD`
 

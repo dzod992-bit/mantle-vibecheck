@@ -1,7 +1,6 @@
 # X thread
 
-Publish from the project owner's public account. Replace
-`[DEMO_VIDEO_URL]` before posting.
+Publish from the project owner's public account.
 
 ## Post 1
 
@@ -14,7 +13,8 @@ Mantle.
 Demo: https://mantle-vibecheck.vercel.app
 Judge evidence: https://mantle-vibecheck.vercel.app/judges
 
-[Attach demo video: `[DEMO_VIDEO_URL]`]
+Demo video:
+https://youtu.be/NL1N_MQqx9I
 
 ## Post 2
 

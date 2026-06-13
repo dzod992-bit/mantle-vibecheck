@@ -18,7 +18,7 @@ audit proofs on Mantle.
 **Contract:**
 https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff52#code
 
-**Demo video:** `[DEMO_VIDEO_URL]`
+**Demo video:** https://youtu.be/NL1N_MQqx9I
 
 **X thread:** `[X_THREAD_URL]`
 
