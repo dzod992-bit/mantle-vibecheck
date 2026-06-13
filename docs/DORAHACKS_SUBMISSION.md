@@ -20,7 +20,7 @@ https://sepolia.mantlescan.xyz/address/0xdf8e3b1d7332903a0ac6ed11c078e0c35a62ff5
 
 **Demo video:** https://youtu.be/NL1N_MQqx9I
 
-**X thread:** `[X_THREAD_URL]`
+**X thread:** https://x.com/BybassBuild/status/2065840319720034460
 
 ## Short description
 

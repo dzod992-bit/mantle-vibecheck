@@ -50,7 +50,7 @@ contracts built at vibe-coding speed.
 ## Owner-only items
 
 - Demo video URL: `https://youtu.be/NL1N_MQqx9I`
-- X thread URL: `TBD`
+- X thread URL: `https://x.com/BybassBuild/status/2065840319720034460`
 - DoraHacks final submission: `TBD`
 
 The OpenAI account currently has insufficient API quota. The production
